@@ -368,33 +368,33 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
 #### 轮播组件配置参数
 
-- container {String / HTMLNode}【可选，默认值：```<body>```节点】
+- *container* {String / HTMLNode}【可选，默认值：```<body>```节点】
 
    轮播组件容器节点，支持选择符或DOM节点（支持的选择符请参考[KISSY DOM选择符](http://docs.kissyui.com/docs/html/api/core/dom/selector.html)）。
 
    该配置参数仅在初始化组件时有效，之后设置无效。
 
-- slices [Object]
+- *slices* [Object]
 
    切片配置（数组），具体请参考“切片配置参数”。该配置参数仅在初始化组件时有效，之后设置无效。
 
-- activeSliceStyle {String}【可选】
+- *activeSliceStyle* {String}【可选】
 
    当前切片样式（选择符）。当前切片切换完毕后，在切片DOM节点上添加该样式。
 
-- inactiveSliceStyle {String}【可选】
+- *inactiveSliceStyle* {String}【可选】
 
    隐藏切片样式（选择符）。切片被隐藏后，在切片DOM节点上添加该样式。该参数与```activeSliceStyle```可同时设置，也可只设置其中一个。
 
-- activeIndicatorStyle {String}【可选】
+- *activeIndicatorStyle* {String}【可选】
 
    当前切片的指示器样式（选择符）。当前切片切换完毕后，在指示器DOM节点上添加该样式。
 
-- inactiveIndicatorStyle {String}【可选】
+- *inactiveIndicatorStyle* {String}【可选】
 
    隐藏切片的指示器样式（选择符）。切片被隐藏后，在指示器DOM节点上添加该样式。
 
-- switchOnIndicator {String}【可选】
+- *switchOnIndicator* {String}【可选】
 
    触发切换的时机。取值如下：
 
@@ -403,81 +403,81 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
    该配置参数仅在初始化组件时有效，之后设置无效。
 
-- switchInterval {Number}【可选，默认值：0】
+- *switchInterval* {Number}【可选，默认值：0】
 
    自动切换间隔时间（单位：秒）。如果该值≤0，则不自动切换。
 
-- hoverPause {Boolean}【可选】
+- *hoverPause* {Boolean}【可选】
 
    鼠标移到切片上时，是否停止自动切换。【默认值：true】
 
 #### 切片对象配置参数
 
-- id {String}【可选】
+- *id* {String}【可选】
 
    切片标识，用于查找切片对象。该配置参数仅在初始化组件时有效，之后设置无效。
 
-- index {String}【只读】
+- *index* {String}【只读】
 
    切片显示索引，从0开始。该参数为只读参数，设置无效。
 
-- sliceNode {String / HTMLNode}【可选】
+- *sliceNode* {String / HTMLNode}【可选】
 
    切片DOM节点（选择符 / DOM节点）。该配置参数仅在初始化组件时有效，之后设置无效。
 
-- actived {Boolean}【可选，默认值：false】
+- *actived* {Boolean}【可选，默认值：false】
 
    初始时，该切片是否为当前切片。该配置参数仅在初始化组件时有效，之后设置无效。
 
-- activeSliceStyle {String}【可选】
+- *activeSliceStyle* {String}【可选】
 
    当前切片样式（选择符）。如果设置，该参数会覆盖轮播组件配置参数```activeSliceStyle```。
 
-- inactiveSliceStyle {String}【可选】
+- *inactiveSliceStyle* {String}【可选】
 
    隐藏切片样式（选择符）。如果设置，该参数会覆盖轮播组件配置参数```inactiveSliceStyle```。
 
-- indicatorNode {String / HTMLNode}【可选】
+- *indicatorNode* {String / HTMLNode}【可选】
 
    指示器DOM节点（选择符 / DOM节点）。该配置参数仅在初始化组件时有效，之后设置无效。
 
-- activeIndicatorStyle {String}【可选】
+- *activeIndicatorStyle* {String}【可选】
 
    当前切片的指示器样式（选择符）。如果设置，该参数会覆盖轮播组件配置参数```activeIndicatorStyle```。
 
-- inactiveIndicatorStyle {String}【可选】
+- *inactiveIndicatorStyle* {String}【可选】
 
    隐藏切片的指示器样式（选择符）。如果设置，该参数会覆盖轮播组件配置参数```inactiveIndicatorStyle```。
 
-- switchInterval {Number}【可选，默认值：0】
+- *switchInterval* {Number}【可选，默认值：0】
 
    自动切换间隔时间（单位：秒）。如果设置，该参数会覆盖轮播组件配置参数```switchInterval```。
 
-- activeEffect {Object}【可选】
+- *activeEffect* {Object}【可选】
 
    切片被显示时的动画，其值请参考[LayerAnim开发手册](http://gallery.kissyui.com/layer-anim/1.1/guide/index.html)。
    
    该配置参数仅在初始化组件时有效，之后设置无效。
 
-- inactiveEffect {Object}【可选】
+- *inactiveEffect* {Object}【可选】
 
    切片被隐藏时的动画，其值请参考[LayerAnim开发手册](http://gallery.kissyui.com/layer-anim/1.1/guide/index.html)。
 
    该配置参数仅在初始化组件时有效，之后设置无效。
 
-- activeIndicatorEffect {Object}【可选】
+- *activeIndicatorEffect* {Object}【可选】
 
    当前切片的指示器动画，其值请参考[LayerAnim开发手册](http://gallery.kissyui.com/layer-anim/1.1/guide/index.html)。
    
    该配置参数仅在初始化组件时有效，之后设置无效。
 
-- inactiveIndicatorEffect {Object}【可选】
+- *inactiveIndicatorEffect* {Object}【可选】
 
    被隐藏切片的指示器动画，其值请参考[LayerAnim开发手册](http://gallery.kissyui.com/layer-anim/1.1/guide/index.html)。
 
    该配置参数仅在初始化组件时有效，之后设置无效。
 
-- lazyRenderNode {String / HTMLNode}【可选】
+- *lazyRenderNode* {String / HTMLNode}【可选】
 
    延迟渲染的容器节点（选择符 / DOM节点）。该配置参数仅在初始化组件时有效，之后设置无效。
 
@@ -485,7 +485,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
 #### 轮播组件方法
 
-- switchTo(slice)
+- *switchTo(slice)*
 
    切换到指定切片，同时触发```beforeswitch```事件。
 
@@ -493,7 +493,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
       slice {Number / 切片对象}：要切换到的切片索引或切片对象。
 
-- nextSlice(recurring)
+- *nextSlice(recurring)*
 
    获取当前切片的下一切片。
 
@@ -505,7 +505,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
       {Slice} 下一切片对象。
 
-- previousSlice(recurring)
+- *previousSlice(recurring)*
 
    获取当前切片的上一切片。
 
@@ -517,7 +517,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
       {Slice} 上一切片对象。
 
-- getActiveSlice()
+- *getActiveSlice()*
 
    获取当前切片。
 
@@ -525,7 +525,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
       {Slice} 当前切片对象。
 
-- getSliceByIndex(index)
+- *getSliceByIndex(index)*
 
    按索引查找切片。
 
@@ -537,7 +537,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
       {Slice} 找到的切片对象。
 
-- getSliceById(id)
+- *getSliceById(id)*
 
    按标识查找切片。
 
@@ -549,7 +549,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
       {Slice} 找到的切片对象。
 
-- bindSliceEvent(name, listener, context)
+- *bindSliceEvent(name, listener, context)*
 
    在所有切片上，绑定DOM事件。
 
@@ -559,7 +559,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
       * listener {Function}：事件监听方法。
       * context {Object}：事件监听方法所属对象。【可选参数，默认：window】
 
-- bindIndicatorEvent(name, listener, context)
+- *bindIndicatorEvent(name, listener, context)*
 
    在所有切片指示器上，绑定DOM事件。
 
@@ -569,7 +569,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
       - listener {Function}：事件监听方法。
       - context {Object}：事件监听方法所属对象。【可选参数，默认：window】
 
-- startAutoSwitch(switchInterval)
+- *startAutoSwitch(switchInterval)*
 
    启动定时切换。
 
@@ -577,19 +577,19 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
       switchInterval {Number}：定时切换间隔时间。【可选参数，默认：轮播组件配置参数```switchInterval```】
 
-- stopAutoSwitch()
+- *stopAutoSwitch()*
 
    停止定时切换。
 
-- pauseAutoSwitch()
+- *pauseAutoSwitch()*
 
    暂停定时切换。如果之后用户手工切换到其它切片，则定时切换会重新启动。
 
-- resumeAutoSwitch()
+- *resumeAutoSwitch()*
 
    如果已暂停定时切换，则调用该方法可继续定时切换。
 
-- isAutoSwitchStarted()
+- *isAutoSwitchStarted()*
 
    定时切换是否已启动。
 
@@ -597,7 +597,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
       {Boolean} 定时切换是否已启动。
 
-- appendSlice(slice)
+- *appendSlice(slice)*
 
    添加切片。切片添加后，触发```sliceadd```事件。
 
@@ -609,7 +609,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
       {Slice} 已添加的切片对象。
 
-- insertSlice(slice, index)
+- *insertSlice(slice, index)*
 
    插入切片。插入后，会触发```sliceadd```事件。
 
@@ -622,7 +622,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
       {Slice} 已插入的切片对象。
 
-- removeSlice(index)
+- *removeSlice(index)*
 
    删除切片。如果被删除的切片为当前切片，则删除后会自动显示下一个切片。如果没有下一个切片，则会显示上一切片。切片删除后，触发```sliceremove```事件。
 
@@ -634,21 +634,21 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
       {Slice} 已删除的切片对象。
 
-- clearSlices()
+- *clearSlices()*
 
    删除所有切片。每删除一个切片，都会触发一次```sliceremove```事件。
 
 #### 切片对象方法
 
-- activate()
+- *activate()*
 
    切换到该切片。
 
-- deactivate()
+- *deactivate()*
 
    隐藏该切片。调用该方法仅仅隐藏切片，并不会显示其它切片。
 
-- bindSliceEvent(name, listener, context)
+- *bindSliceEvent(name, listener, context)*
 
    在该切片上，绑定DOM事件。
 
@@ -658,15 +658,15 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
       * listener {Function}：事件监听方法。
       * context {Object}：事件监听方法所属对象。【可选参数，默认：window】
 
-- displayActiveSliceStyle()
+- *displayActiveSliceStyle()*
 
    显示当前切片样式，将切片样式设为配置参数```activeSliceStyle```值。
 
-- displayInactiveSliceStyle()
+- *displayInactiveSliceStyle()*
 
    显示隐藏切片样式，将切片样式设为配置参数```inactiveSliceStyle```值。
 
-- bindIndicatorEvent(name, listener, context)
+- *bindIndicatorEvent(name, listener, context)*
 
    在该切片的指示器上，绑定DOM事件。
 
@@ -676,19 +676,19 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
       - listener {Function}：事件监听方法。
       - context {Object}：事件监听方法所属对象。【可选参数，默认：window】
 
-- displayActiveIndicatorStyle()
+- *displayActiveIndicatorStyle()*
 
    显示当前指示器样式，将指示器的样式设为配置参数```activeIndicatorStyle```值。
 
-- displayInactiveIndicatorStyle()
+- *displayInactiveIndicatorStyle()*
 
    显示隐藏指示器样式，将指示器的样式设为配置参数```inactiveIndicatorStyle```值。
 
-- renderLazily()
+- *renderLazily()*
 
    延迟渲染该切片。
 
-- appendTo(slider)
+- *appendTo(slider)*
 
    将该切片添加到轮播组件。
 
@@ -700,7 +700,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
       {Slice} 该切片对象。
 
-- insertTo(slider, index)
+- *insertTo(slider, index)*
 
    将该切片插入到轮播组件。
 
@@ -713,7 +713,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
       {Slice} 该切片对象。
 
-- remove()
+- *remove()*
 
    删除该切片，同时删除相应的切片节点和指示器节点。
 
@@ -721,7 +721,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
 #### 轮播组件事件
 
-- beforeswitch(e)【事件可取消（e.preventDefault）】
+- *beforeswitch(e)*【事件可取消（e.preventDefault）】
 
    切片切换前，触发该事件。
 
@@ -729,7 +729,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
       e.slice {Slice}：将要显示的切片对象。
 
-- afterswitch(e)
+- *afterswitch(e)*
 
    切片切换后，触发该事件。该事件将在```beforeswitch```事件后立即被触发，如果配置了切换动画，则该事件在动画播放前被触发。
 
@@ -738,15 +738,15 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
       - e.slice {Slice}：当前切片对象。
       - e.sliceInactived {Slice}：被隐藏的切片对象。
 
-- switchnext()【事件可取消（e.preventDefault）】
+- *switchnext()*【事件可取消（e.preventDefault）】
 
    自动切换时，切换到下个切片前，触发该事件。
 
-- switchprevious()【事件可取消（e.preventDefault）】
+- *switchprevious()*【事件可取消（e.preventDefault）】
 
    自动切换时，切换到上个切片前，触发该事件。
 
-- sliceadd(e)
+- *sliceadd(e)*
 
    添加切片后，触发该事件。
 
@@ -755,7 +755,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
       - e.slice {Slice}：添加的切片对象。
       - e.index {Number}：插入的索引位置。
 
-- sliceremove(e)
+- *sliceremove(e)*
 
    删除切片后，触发该事件。
 
@@ -767,7 +767,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
 #### 切片对象事件
 
-- activeslicestyledisplay(e)【事件可取消（e.preventDefault）】
+- *activeslicestyledisplay(e)*【事件可取消（e.preventDefault）】
 
    添加当前切片的样式前，触发该事件。
 
@@ -775,7 +775,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
       e.sliceInactived {Slice}：隐藏的切片对象。
 
-- inactiveslicestyledisplay(e)【事件可取消（e.preventDefault）】
+- *inactiveslicestyledisplay(e)*【事件可取消（e.preventDefault）】
 
    添加隐藏切片的样式前，触发该事件。
 
@@ -783,7 +783,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
       e.sliceActived {Slice}：当前切片对象。
 
-- activeindicatorstyledisplay(e)【事件可取消（e.preventDefault）】
+- *activeindicatorstyledisplay(e)*【事件可取消（e.preventDefault）】
 
    显示当前指示器的样式前，触发该事件。
 
@@ -791,7 +791,7 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
       e.sliceInactived {Slice}：隐藏切片对象。
 
-- inactiveindicatorstyledisplay(e)【事件可取消（e.preventDefault）】
+- *inactiveindicatorstyledisplay(e)*【事件可取消（e.preventDefault）】
 
    显示隐藏指示器的样式前，触发该事件。
 
@@ -799,6 +799,6 @@ slider.set("switchInterval", 5);  // 设置切片自动切换间隔时间为5秒
 
       e.sliceActived {Slice}：当前切片对象。
 
-- lazyrender()
+- *lazyrender()*
 
    延迟渲染切片后，触发该事件。
