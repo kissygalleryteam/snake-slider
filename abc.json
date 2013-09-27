@@ -1,0 +1,14 @@
+{
+    "name": "snake-slider",
+    "version": "1.0",
+    "desc": "轮播组件，支持定制切换动画",
+    "cover": "",
+    "tag":"slide",
+    "author": {
+        "name": "agu.hc",
+        "email": "agu.hc@taobao.com",
+        "page": "https://github.com/blueaqua2000"
+    },
+    "type": "kissy-gallery",
+    "type-url": "http://gallery.kissyui.com/guide"
+}
