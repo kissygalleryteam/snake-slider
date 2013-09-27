@@ -7,7 +7,7 @@
 
 “轮播组件”常用于滚动展示图片，例如：焦点图。
 
-SnakeSlider是一个可定制复杂动画的轮播组件，支持在切换显示/隐藏切片时分别显示不同动画，基于[LayerAnim](http://gallery.kissyui.com/layer-anim/1.1/demo/index.html)组件实现动画效果。
+SnakeSlider是一个可定制复杂动画的轮播组件，支持在切换显示/隐藏切片时分别显示不同动画，基于[LayerAnim](http://gallery.kissyui.com/layer-anim/1.1/guide/index.html)组件实现动画效果。
 
 ## 名词术语
 
@@ -41,7 +41,7 @@ SnakeSlider是一个可定制复杂动画的轮播组件，支持在切换显示
 ## 依赖
 
 * [KISSY](http://docs.kissyui.com) 1.3.0+
-* [LayerAnim](http://gallery.kissyui.com/layer-anim/1.1/demo/index.html) 1.1
+* [LayerAnim](http://gallery.kissyui.com/layer-anim/1.1/guide/index.html) 1.1
 
 ## 浏览器兼容性（Broswer Support）
 
