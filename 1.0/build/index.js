@@ -2305,7 +2305,7 @@ KISSY.add('gallery/snake-slider/1.0/slice-management',function(KISSY)
                 if (typeof slice == "object")
                 {
                     var SliceClass = this.constructor.CHILD_WIDGET, slices = this.get("slices"), size = slices.length;
-                    if (! slice instanceof SliceClass)  // 切片配置参数
+                    if (! (slice instanceof SliceClass))  // 切片配置参数
                     {
                         slice = new SliceClass(slice);
                     }
