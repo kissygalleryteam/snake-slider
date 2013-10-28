@@ -5,7 +5,7 @@
 * Demo：[http://gallery.kissyui.com/snake-slider/1.0/demo/index.html](http://gallery.kissyui.com/snake-slider/1.0/demo/index.html)
 * 作者：阿古
 
-SnakeSlider是一个可定制复杂动画的轮播组件，支持在切换显示/隐藏切片时分别显示不同动画，使用[LayerAnim](http://gallery.kissyui.com/layer-anim/1.1/demo/index.html)组件实现动画效果。
+SnakeSlider是一个可定制复杂动画的轮播组件，支持在切换显示/隐藏切片时分别显示不同动画，使用[LayerAnim](http://gallery.kissyui.com/layer-anim/1.1/guide/index.html)组件实现动画效果。
 
 ## 功能（Features）
 
