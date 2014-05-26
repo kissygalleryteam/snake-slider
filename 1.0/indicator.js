@@ -71,7 +71,7 @@ KISSY.add(function(KISSY, DOM, Event)
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
             this.on("afterswitch", this._switchIndicator);  // 切换后，激活指示器
         },
@@ -181,7 +181,7 @@ KISSY.add(function(KISSY, DOM, Event)
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
             this.bindEventConfiguration(["activeindicatorstyledisplay", "inactiveindicatorstyledisplay"], config);  // 绑定初始化事件配置
         },

@@ -104,7 +104,7 @@ KISSY.add(function(KISSY, DOM, Event, Extensible, DOMTransform, EventConfigurabl
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
             this._sliceMap = {};  // 切片映射 <切片id, Slice>
             this.bindEventConfiguration(["beforeswitch", "afterswitch"], config);  // 绑定初始化事件配置
@@ -395,9 +395,9 @@ KISSY.add(function(KISSY, DOM, Event, Extensible, DOMTransform, EventConfigurabl
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
-            //console.log("Slice.initializer");
+            //console.log("Slice.init");
             this.bindEventConfiguration(["activeslicestyledisplay", "inactiveslicestyledisplay"], config);  // 绑定初始化事件配置
         },
 

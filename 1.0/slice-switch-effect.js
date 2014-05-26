@@ -181,7 +181,7 @@ KISSY.add(function(KISSY, DOM, LayerAnim)
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
             var transformParam;
             if (config && (transformParam = config.transformParam))  // DOM方式创建组件
