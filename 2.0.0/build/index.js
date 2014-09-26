@@ -1,16 +1,16 @@
 /*
 combined files : 
 
-kg/snake-slider/2.0.0/lib/extensible
-kg/snake-slider/2.0.0/lib/dom-transform
-kg/snake-slider/2.0.0/lib/event-configurable
-kg/snake-slider/2.0.0/lib/switching
-kg/snake-slider/2.0.0/lib/auto-switch
-kg/snake-slider/2.0.0/lib/indicator
-kg/snake-slider/2.0.0/lib/lazy-render
-kg/snake-slider/2.0.0/lib/slice-switch-effect
-kg/snake-slider/2.0.0/lib/indicator-switch-effect
-kg/snake-slider/2.0.0/lib/slice-management
+kg/snake-slider/2.0.0/extensible
+kg/snake-slider/2.0.0/dom-transform
+kg/snake-slider/2.0.0/event-configurable
+kg/snake-slider/2.0.0/switching
+kg/snake-slider/2.0.0/auto-switch
+kg/snake-slider/2.0.0/indicator
+kg/snake-slider/2.0.0/lazy-render
+kg/snake-slider/2.0.0/slice-switch-effect
+kg/snake-slider/2.0.0/indicator-switch-effect
+kg/snake-slider/2.0.0/slice-management
 kg/snake-slider/2.0.0/index
 
 */
@@ -21,7 +21,7 @@ kg/snake-slider/2.0.0/index
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/extensible',function(KISSY, Base)
+KISSY.add('kg/snake-slider/2.0.0/extensible',function(KISSY, Base)
 {
     var Extensible =
     {
@@ -353,7 +353,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/extensible',function(KISSY, Base)
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/dom-transform',function(KISSY, DOM)
+KISSY.add('kg/snake-slider/2.0.0/dom-transform',function(KISSY, DOM)
 {
     var DOMTransform =
     {
@@ -411,7 +411,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/dom-transform',function(KISSY, DOM)
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/event-configurable',function(KISSY)
+KISSY.add('kg/snake-slider/2.0.0/event-configurable',function(KISSY)
 {
     var EventConfigurable =
     {
@@ -451,7 +451,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/event-configurable',function(KISSY)
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/switching',function(KISSY, DOM, Event, Extensible, DOMTransform, EventConfigurable)
+KISSY.add('kg/snake-slider/2.0.0/switching',function(KISSY, DOM, Event, Extensible, DOMTransform, EventConfigurable)
 {
     /**
      * 配置参数
@@ -1002,7 +1002,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/switching',function(KISSY, DOM, Event, Exte
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/auto-switch',function(KISSY, DOM)
+KISSY.add('kg/snake-slider/2.0.0/auto-switch',function(KISSY, DOM)
 {
     /**
      * 配置参数:
@@ -1271,7 +1271,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/auto-switch',function(KISSY, DOM)
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/indicator',function(KISSY, DOM, Event)
+KISSY.add('kg/snake-slider/2.0.0/indicator',function(KISSY, DOM, Event)
 {
     /**
      * 配置参数:
@@ -1551,7 +1551,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/indicator',function(KISSY, DOM, Event)
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/lazy-render',function(KISSY, DOM)
+KISSY.add('kg/snake-slider/2.0.0/lazy-render',function(KISSY, DOM)
 {
     /**
      * 配置参数:
@@ -1678,7 +1678,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/lazy-render',function(KISSY, DOM)
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/slice-switch-effect',function(KISSY, DOM, LayerAnim)
+KISSY.add('kg/snake-slider/2.0.0/slice-switch-effect',function(KISSY, DOM, LayerAnim)
 {
     /**
      * 配置参数:
@@ -2016,7 +2016,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/slice-switch-effect',function(KISSY, DOM, L
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/indicator-switch-effect',function(KISSY, DOM, LayerAnim)
+KISSY.add('kg/snake-slider/2.0.0/indicator-switch-effect',function(KISSY, DOM, LayerAnim)
 {
     /**
      * 配置参数:
@@ -2253,7 +2253,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/indicator-switch-effect',function(KISSY, DO
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/slice-management',function(KISSY)
+KISSY.add('kg/snake-slider/2.0.0/slice-management',function(KISSY)
 {
     /**
      * 事件:
@@ -2512,6 +2512,6 @@ KISSY.add('kg/snake-slider/2.0.0/index',function(KISSY, DOM, Switching, AutoSwit
     return Switching.combine([Indicator, AutoSwitch, LazyRender, SliceSwitchEffect, IndicatorSwitchEffect, SliceManagement, SliderExt], initializer);
 },
 {
-    requires: ["dom", "./lib/switching", "./lib/auto-switch", "./lib/indicator", "./lib/lazy-render", "./lib/slice-switch-effect", "./lib/indicator-switch-effect", "./lib/slice-management"]
+    requires: ["dom", "./switching", "./auto-switch", "./indicator", "./lazy-render", "./slice-switch-effect", "./indicator-switch-effect", "./slice-management"]
 });
 

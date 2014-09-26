@@ -9,6 +9,5 @@
         "!lib/**/*"
     ],
     "dependencies": {
-        "layer-anim": "kg/layer-anim#2.0.0"
     }
 }

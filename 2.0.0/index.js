@@ -81,5 +81,5 @@ KISSY.add(function(KISSY, DOM, Switching, AutoSwitch, Indicator, LazyRender, Sli
     return Switching.combine([Indicator, AutoSwitch, LazyRender, SliceSwitchEffect, IndicatorSwitchEffect, SliceManagement, SliderExt], initializer);
 },
 {
-    requires: ["dom", "./lib/switching", "./lib/auto-switch", "./lib/indicator", "./lib/lazy-render", "./lib/slice-switch-effect", "./lib/indicator-switch-effect", "./lib/slice-management"]
+    requires: ["dom", "./switching", "./auto-switch", "./indicator", "./lazy-render", "./slice-switch-effect", "./indicator-switch-effect", "./slice-management"]
 });
