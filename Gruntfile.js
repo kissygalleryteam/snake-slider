@@ -5,12 +5,7 @@ module.exports = function(grunt) {
         // name作为gallery发布后的模块名
         // version是版本，也是发布目录
         // author必须是{name: "xxx", email: "xxx"}格式
-        pkg: grunt.file.readJSON('abc.json'),
-        banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-            '<%= grunt.template.today("yyyy-mm-dd h:MM:ss TT") %>\n' +
-            '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-            '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-            ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+        pkg: grunt.file.readJSON('bower.json'),
 
         // kmc打包任务，默认情况，入口文件是index.js，可以自行添加入口文件，在files下面
         // 添加
@@ -22,13 +17,13 @@ module.exports = function(grunt) {
                         path: '../'
                     }
                 ],
-                map: [["<%= pkg.name %>/", "gallery/<%= pkg.name %>/"]]
+                map: [["<%= pkg.name %>/", "kg/<%= pkg.name %>/<%= pkg.version%>/"]]
             },
             main: {
                 files: [
                     {
-                        src: "<%= pkg.version %>/index.js",
-                        dest: "<%= pkg.version %>/build/index.js"
+                        src: "./index.js",
+                        dest: "./build/index.js"
                     }
                 ]
             }
@@ -44,21 +39,21 @@ module.exports = function(grunt) {
             },
             base: {
                 files: {
-                    '<%= pkg.version %>/build/index-min.js': ['<%= pkg.version %>/build/index.js']
+                    './build/index-min.js': ['./build/index.js']
                 }
             }
         },
         copy: {
             main: {
                 files: [
-                    {src: ['<%= pkg.version %>/index.css'], dest: '<%= pkg.version %>/build/index.css'}
+                    {src: ['./index.css'], dest: './build/index.css'}
                 ]
             }
         },
         cssmin: {
             combine: {
                 files: {
-                    '<%= pkg.version %>/build/index-min.css': ['<%= pkg.version %>/build/index.css']
+                    './build/index-min.css': ['./build/index.css']
                 }
             }
         }
