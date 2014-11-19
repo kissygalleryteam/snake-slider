@@ -1,9 +1,9 @@
 动画轮播组件（SnakeSlider）
 ==========================
 
-* 版本：2.0.0
+* 版本：2.0.1
 * 作者：阿古
-* Demo：[http://gallery.kissyui.com/snake-slider/2.0.0/demo/index.html](http://gallery.kissyui.com/snake-slider/2.0.0/demo/index.html)
+* Demo：[http://gallery.kissyui.com/snake-slider/2.0.1/demo/index.html](http://gallery.kissyui.com/snake-slider/2.0.1/demo/index.html)
 
 “轮播组件”常用于滚动展示图片，例如：焦点图。
 
@@ -40,8 +40,8 @@ SnakeSlider是一个可定制复杂动画的轮播组件，支持在切换显示
 
 ## 依赖
 
-* [KISSY](http://docs.kissyui.com) 1.3.0+
-* [LayerAnim](http://gallery.kissyui.com/layer-anim/2.0.0/guide/index.html) 1.1
+* [KISSY](http://docs.kissyui.com) 1.4.7+
+* [LayerAnim](http://gallery.kissyui.com/layer-anim/2.0.0/guide/index.html) 2.0.0
 
 ## 浏览器兼容性（Broswer Support）
 
@@ -58,7 +58,7 @@ SnakeSlider是一个可定制复杂动画的轮播组件，支持在切换显示
 ### 初始化组件
 
 ```
-KISSY.use('kg/snake-slider/2.0.0/index', function (S, SnakeSlider)
+KISSY.use('kg/snake-slider/2.0.1/index', function (S, SnakeSlider)
 {
      var slider = new SnakeSlider();
 })
@@ -92,7 +92,7 @@ SnakeSlider可基于任意HTML结构创建，给开发者提供足够的灵活�
 #### 从JS创建
 
 ```javascript
-KISSY.use("kg/snake-slider/2.0.0/, dom", function(S, SnakeSlider, DOM)
+KISSY.use("kg/snake-slider/2.0.1/, dom", function(S, SnakeSlider, DOM)
 {
     // 构造切片配置参数
     var slices = [];  // 切片列表配置参数
@@ -164,7 +164,7 @@ HTML如下：
 有了上面的HTML，创建轮播组件就非常简单了：
 
 ```javascript
-KISSY.use("kg/snake-slider/2.0.0/", function(S, SnakeSlider)
+KISSY.use("kg/snake-slider/2.0.1/", function(S, SnakeSlider)
 {
     // 从DOM节点创建轮播组件
     SnakeSlider.transform(".slider");
@@ -197,7 +197,7 @@ KISSY.use("kg/snake-slider/2.0.0/", function(S, SnakeSlider)
 切片和指示器都使用了自定义选择符```my-slice```和```my-slice-indicator```，那么，创建轮播组件的方法如下：
 
 ```javascript
-KISSY.use("kg/snake-slider/2.0.0/", function(S, SnakeSlider)
+KISSY.use("kg/snake-slider/2.0.1/", function(S, SnakeSlider)
 {
     // 从DOM节点创建轮播组件
     SnakeSlider.transform(".my-slider", 
@@ -317,7 +317,7 @@ KISSY.use("kg/snake-slider/2.0.0/", function(S, SnakeSlider)
 - JS方式创建
 
 ```javascript
-KISSY.use("kg/snake-slider/2.0.0/", function(S, SnakeSlider)
+KISSY.use("kg/snake-slider/2.0.1/", function(S, SnakeSlider)
 {
     var config = /* 配置参数 */;
     new SnakeSlider(config);
@@ -349,7 +349,7 @@ KISSY.use("kg/snake-slider/2.0.0/", function(S, SnakeSlider)
 ```
 
 ```javascript
-KISSY.use("kg/snake-slider/2.0.0/", function(S, SnakeSlider)
+KISSY.use("kg/snake-slider/2.0.1/", function(S, SnakeSlider)
 {
     var node = "/* DOM节点 */";
     SnakeSlider.transform(node);
