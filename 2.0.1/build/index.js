@@ -1,27 +1,27 @@
 /*
 combined files : 
 
-kg/snake-slider/2.0.0/lib/extensible
-kg/snake-slider/2.0.0/lib/dom-transform
-kg/snake-slider/2.0.0/lib/event-configurable
-kg/snake-slider/2.0.0/lib/switching
-kg/snake-slider/2.0.0/lib/auto-switch
-kg/snake-slider/2.0.0/lib/indicator
-kg/snake-slider/2.0.0/lib/lazy-render
-kg/snake-slider/2.0.0/lib/slice-switch-effect
-kg/snake-slider/2.0.0/lib/indicator-switch-effect
-kg/snake-slider/2.0.0/lib/slice-management
-kg/snake-slider/2.0.0/index
+kg/snake-slider/2.0.1/lib/extensible
+kg/snake-slider/2.0.1/lib/dom-transform
+kg/snake-slider/2.0.1/lib/event-configurable
+kg/snake-slider/2.0.1/lib/switching
+kg/snake-slider/2.0.1/lib/auto-switch
+kg/snake-slider/2.0.1/lib/indicator
+kg/snake-slider/2.0.1/lib/lazy-render
+kg/snake-slider/2.0.1/lib/slice-switch-effect
+kg/snake-slider/2.0.1/lib/indicator-switch-effect
+kg/snake-slider/2.0.1/lib/slice-management
+kg/snake-slider/2.0.1/index
 
 */
 /**
- * @fileoverview 轮播组件 - 扩展能力模块（支持添加静态扩展模块/插件模块，所有扩展模块/插件模块必须为类（Function），其构造函数为空，如需初始化，必须定义在初始化方法initializer中）
+ * @fileoverview 轮播组件 - 扩展能力模块（支持添加静态扩展模块/插件模块，所有扩展模块/插件模块必须为类（Function），其构造函数为空，如需初始化，必须定义在初始化方法init中）
  * @author 阿古<agu.hc@taobao.com>
  * @module snake-slider
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/extensible',function(KISSY, Base)
+KISSY.add('kg/snake-slider/2.0.1/lib/extensible',function(KISSY, Base)
 {
     var Extensible =
     {
@@ -29,10 +29,10 @@ KISSY.add('kg/snake-slider/2.0.0/lib/extensible',function(KISSY, Base)
          * 创建组合类
          * @public
          * @param extentions {Function / [Function]} 扩展类（其静态属性和原型属性将被复制到新创建的组合类中）
-         * @param initializer {Function} 初始化方法（可选，组合类初始化后，才调用该方法）
+         * @param init {Function} 初始化方法（可选，组合类初始化后，才调用该方法）
          * @returns {Function} 组合类
          */
-        combine: function(extentions, initializer)
+        combine: function(extentions, init)
         {
             var result = this._cloneDeeply(this), size, i;
             if (extentions)
@@ -54,17 +54,17 @@ KISSY.add('kg/snake-slider/2.0.0/lib/extensible',function(KISSY, Base)
             {
                 KISSY.extend(i, Base);
             }
-            this._addInitializer(result, initializer);  // 添加初始化回调方法
+            this._addInitializer(result, init);  // 添加初始化回调方法
             return result;
         },
 
         /**
          * 添加插件模块
          * @param plugins {Function / [Function]} 插件类（其静态属性和原型属性将被复制到基类中）
-         * @param initializer {Function} 初始化方法（可选参数，插件初始化后，才调用该方法）
+         * @param init {Function} 初始化方法（可选参数，插件初始化后，才调用该方法）
          * @returns {Function} 基类（其中包含插件的属性和方法）
          */
-        plug: function(plugins, initializer)
+        plug: function(plugins, init)
         {
             var result = this, size, i;
             if (plugins)
@@ -85,7 +85,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/extensible',function(KISSY, Base)
                 {
                     KISSY.extend(i, Base);
                 }
-                this._addInitializer(result, initializer);  // 添加初始化回调方法
+                this._addInitializer(result, init);  // 添加初始化回调方法
             }
             return result;
         },
@@ -212,20 +212,20 @@ KISSY.add('kg/snake-slider/2.0.0/lib/extensible',function(KISSY, Base)
                         if ((type = src.prototype) && ! KISSY.isEmptyObject(type))  // 类
                         {
                             context.push(src);  // 保存已复制对象，以便检查循环引用
-                            // 创建新构造函数，调用初始化方法initializer
+                            // 创建新构造函数，调用初始化方法init
                             result = src._zoo_cloned_flag = function()
                             {
-                                var constructor = this.constructor, args = arguments, initializer = this.initializer, size, i;
+                                var constructor = this.constructor, args = arguments, init = this.init, size, i;
                                 if (constructor && (constructor = constructor.superclass))  // 调用父类构造函数
                                 {
                                     constructor.constructor.apply(this, args);
                                 }
-                                if (initializer)  // 执行初始化方法
+                                if (init)  // 执行初始化方法
                                 {
-                                    initializer = initializer instanceof Array ? initializer : [initializer];
-                                    for (size = initializer.length, i = 0; i < size;)
+                                    init = init instanceof Array ? init : [init];
+                                    for (size = init.length, i = 0; i < size;)
                                     {
-                                        initializer[i ++].apply(this, args);
+                                        init[i ++].apply(this, args);
                                     }
                                 }
                                 this.fire("zooinstanceinitialized", {args: args});  // 触发初始化完成事件
@@ -306,22 +306,22 @@ KISSY.add('kg/snake-slider/2.0.0/lib/extensible',function(KISSY, Base)
          * 添加初始化回调方法
          * @private
          * @param cls 类
-         * @param initializer 初始化方法
+         * @param init 初始化方法
          */
-        _addInitializer: function(cls, initializer)
+        _addInitializer: function(cls, init)
         {
-            if (initializer)
+            if (init)
             {
                 var handler = function()
                 {
                     this.on("zooinstanceinitialized", function(e)  // 实例化后，调用初始化回调方法
                     {
-                        initializer.apply(this, e.args);
+                        init.apply(this, e.args);
                     });
                 }, type, handlers;
                 if (type = cls.prototype)  // 原型对象
                 {
-                    if (handlers = type.initializer)  // 原型对象中的initializer
+                    if (handlers = type.init)  // 原型对象中的init
                     {
                         if (handlers instanceof Array)
                         {
@@ -329,12 +329,12 @@ KISSY.add('kg/snake-slider/2.0.0/lib/extensible',function(KISSY, Base)
                         }
                         else  // 非数组
                         {
-                            type.initializer = [handlers, handler];
+                            type.init = [handlers, handler];
                         }
                     }
                     else  // 无初始化方法
                     {
-                        type.initializer = handler;
+                        type.init = handler;
                     }
                 }
             }
@@ -353,7 +353,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/extensible',function(KISSY, Base)
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/dom-transform',function(KISSY, DOM)
+KISSY.add('kg/snake-slider/2.0.1/lib/dom-transform',function(KISSY, DOM)
 {
     var DOMTransform =
     {
@@ -411,7 +411,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/dom-transform',function(KISSY, DOM)
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/event-configurable',function(KISSY)
+KISSY.add('kg/snake-slider/2.0.1/lib/event-configurable',function(KISSY)
 {
     var EventConfigurable =
     {
@@ -451,7 +451,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/event-configurable',function(KISSY)
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/switching',function(KISSY, DOM, Event, Extensible, DOMTransform, EventConfigurable)
+KISSY.add('kg/snake-slider/2.0.1/lib/switching',function(KISSY, DOM, Event, Extensible, DOMTransform, EventConfigurable)
 {
     /**
      * 配置参数
@@ -550,7 +550,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/switching',function(KISSY, DOM, Event, Exte
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
             this._sliceMap = {};  // 切片映射 <切片id, Slice>
             this.bindEventConfiguration(["beforeswitch", "afterswitch"], config);  // 绑定初始化事件配置
@@ -841,9 +841,9 @@ KISSY.add('kg/snake-slider/2.0.0/lib/switching',function(KISSY, DOM, Event, Exte
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
-            //console.log("Slice.initializer");
+            //console.log("Slice.init");
             this.bindEventConfiguration(["activeslicestyledisplay", "inactiveslicestyledisplay"], config);  // 绑定初始化事件配置
         },
 
@@ -1002,7 +1002,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/switching',function(KISSY, DOM, Event, Exte
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/auto-switch',function(KISSY, DOM)
+KISSY.add('kg/snake-slider/2.0.1/lib/auto-switch',function(KISSY, DOM)
 {
     /**
      * 配置参数:
@@ -1085,7 +1085,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/auto-switch',function(KISSY, DOM)
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
             this.on("afterswitch", this.resumeAutoSwitch);  // 切换后，继续自动切换
             if (this.get("hoverPause"))  // 鼠标移到切片上时，是否停止切换
@@ -1271,7 +1271,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/auto-switch',function(KISSY, DOM)
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/indicator',function(KISSY, DOM, Event)
+KISSY.add('kg/snake-slider/2.0.1/lib/indicator',function(KISSY, DOM, Event)
 {
     /**
      * 配置参数:
@@ -1337,7 +1337,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/indicator',function(KISSY, DOM, Event)
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
             this.on("afterswitch", this._switchIndicator);  // 切换后，激活指示器
         },
@@ -1447,7 +1447,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/indicator',function(KISSY, DOM, Event)
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
             this.bindEventConfiguration(["activeindicatorstyledisplay", "inactiveindicatorstyledisplay"], config);  // 绑定初始化事件配置
         },
@@ -1551,7 +1551,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/indicator',function(KISSY, DOM, Event)
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/lazy-render',function(KISSY, DOM)
+KISSY.add('kg/snake-slider/2.0.1/lib/lazy-render',function(KISSY, DOM)
 {
     /**
      * 配置参数:
@@ -1577,7 +1577,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/lazy-render',function(KISSY, DOM)
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
             this.on("beforeswitch", this._lazyRenderHandler);
         },
@@ -1644,7 +1644,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/lazy-render',function(KISSY, DOM)
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
             this.bindEventConfiguration(["lazyrender"], config);  // 绑定初始化事件配置
         },
@@ -1678,7 +1678,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/lazy-render',function(KISSY, DOM)
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/slice-switch-effect',function(KISSY, DOM, LayerAnim)
+KISSY.add('kg/snake-slider/2.0.1/lib/slice-switch-effect',function(KISSY, DOM, LayerAnim)
 {
     /**
      * 配置参数:
@@ -1854,7 +1854,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/slice-switch-effect',function(KISSY, DOM, L
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
             var transformParam;
             if (config && (transformParam = config.transformParam))  // DOM方式创建组件
@@ -2016,7 +2016,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/slice-switch-effect',function(KISSY, DOM, L
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/indicator-switch-effect',function(KISSY, DOM, LayerAnim)
+KISSY.add('kg/snake-slider/2.0.1/lib/indicator-switch-effect',function(KISSY, DOM, LayerAnim)
 {
     /**
      * 配置参数:
@@ -2163,7 +2163,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/indicator-switch-effect',function(KISSY, DO
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
             this.on("activeindicatorstyledisplay", this._runActiveIndicatorEffect);  // 绑定显示激活样式事件
             this.on("inactiveindicatorstyledisplay", this._runInactiveIndicatorEffect);  // 绑定显示闲置样式事件
@@ -2253,7 +2253,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/indicator-switch-effect',function(KISSY, DO
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/lib/slice-management',function(KISSY)
+KISSY.add('kg/snake-slider/2.0.1/lib/slice-management',function(KISSY)
 {
     /**
      * 事件:
@@ -2271,7 +2271,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/slice-management',function(KISSY)
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
             this.bindEventConfiguration(["sliceadd", "sliceremove"], config);  // 绑定初始化事件配置
         },
@@ -2436,7 +2436,7 @@ KISSY.add('kg/snake-slider/2.0.0/lib/slice-management',function(KISSY)
  * @version 1.0
  * @date 2013-9-24
  */
-KISSY.add('kg/snake-slider/2.0.0/index',function(KISSY, DOM, Switching, AutoSwitch, Indicator, LazyRender, SliceSwitchEffect, IndicatorSwitchEffect, SliceManagement)
+KISSY.add('kg/snake-slider/2.0.1/index',function(KISSY, DOM, Switching, AutoSwitch, Indicator, LazyRender, SliceSwitchEffect, IndicatorSwitchEffect, SliceManagement)
 {
     /**
      * 配置参数
@@ -2481,7 +2481,7 @@ KISSY.add('kg/snake-slider/2.0.0/index',function(KISSY, DOM, Switching, AutoSwit
      */
     var initializer = function(config)
     {
-        //console.log("zoo.SliderExt.initializer");
+        //console.log("zoo.SliderExt.init");
         this.bindIndicatorEvent(this.get("switchOnIndicator"), function(e, Switching, slice)  // 绑定指示器节点事件
         {
             e.preventDefault();
