@@ -2,7 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
+<<<<<<< HEAD
     <title>Slider</title>
+=======
+    <title>snake-slider</title>
+>>>>>>> 37ab2033e1007dce1d8cd3fd9dcec70bac718e11
     <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://docs.kissyui.com/1.4/source/guideline/templates/assets/com-prettify.css">
     <link rel="stylesheet" href="http://docs.kissyui.com/1.4/source/guideline/templates/assets/com.css">
@@ -21,6 +25,7 @@
           <ul data-spy="affix" data-offset-top="0" class="nav nav-list bs-docs-sidenav"></ul>
         </div>
         <div class="span9 bs-docs-content">
+<<<<<<< HEAD
           <h1 data-id="undefined" class="title">Slider</h1>
           <p class="author-wrapper"><span>组件有问题？旺旺联系作者：</span>
           </p>
@@ -198,6 +203,717 @@ S.use(&#39;kg/slider/1.0.0/index&#39;, function (S, Slider) {
 </tr>
 </tbody>
 </table>
+=======
+          <h1 data-id="undefined" class="title">snake-slider</h1>
+          <p class="author-wrapper"><span>组件有问题？旺旺联系作者：</span><a href="https://github.com/agu" target="_blank" data-name="阿古" class="author"><img src="https://avatars.githubusercontent.com/u/859087?v=2&amp;s=60" alt="阿古"></a><span class="author-name">阿古</span>
+          </p>
+          <div class="common-link"><a href="../demo/index.html" target="_blank" class="demo">示例</a><a href="https://github.com/kissygalleryteam/snake-slider" target="_blank" class="source">源码</a></div>
+          <p class="com-info"><span class="info-label">View</span><span data-com="snake-slider" class="J_View">1382</span></p>
+          <p class="com-info"><span class="info-label">所属分类</span><a href="http://kpm.taobao.net/list/动画&amp;效果">动画&amp;效果</a><span class="info-label tag-label">组件标签</span><a href="http://kpm.taobao.net/list/tag?tag=slide">slide</a>
+          </p>
+          <p class="com-info"><span class="info-label">kissy版本</span><span>1.4.X</span>
+          </p><h1 id="-snakeslider-">动画轮播组件（SnakeSlider）</h1>
+<ul>
+<li>版本：2.0.0</li>
+<li>作者：阿古</li>
+<li>Demo：<a href="http://gallery.kissyui.com/snake-slider/2.0.0/demo/index.html">http://gallery.kissyui.com/snake-slider/2.0.0/demo/index.html</a></li>
+</ul>
+<p>“轮播组件”常用于滚动展示图片，例如：焦点图。</p>
+<p>SnakeSlider是一个可定制复杂动画的轮播组件，支持在切换显示/隐藏切片时分别显示不同动画，基于<a href="http://gallery.kissyui.com/layer-anim/2.0.0/guide/index.html">LayerAnim</a>组件实现动画效果。</p>
+<h2 id="-">名词术语</h2>
+<p><img src="term.png" alt=""></p>
+<ul>
+<li><p>切片（Slice）</p>
+<p> 轮播组件中，切换的部分称之为“切片”。一个轮播组件由多个切片组成。当切换到当前切片时，可显示切换动画。当前切片被隐藏时，也可显示切换动画。由于动画基于LayerAnim实现，因此SnakeSlider可支持定制各种个性化的分层动画。</p>
+</li>
+<li><p>当前（Actived）切片</p>
+<p> 当前显示的切片即为“当前切片”。</p>
+</li>
+<li><p>隐藏（Inactived）切片</p>
+<p> 未显示的切片为“隐藏切片”。</p>
+</li>
+<li><p>指示器（Indicator）</p>
+<p> “指示器”用于标识每个切片在轮播组件中的顺序。</p>
+</li>
+</ul>
+<h2 id="-features-">功能（Features）</h2>
+<ul>
+<li>支持自定义轮播切换动画，可定制任意复杂的动画效果（例如：显示一组顺序播放的动画）</li>
+<li>支持自定义指示器切换动画，同样可定制任意复杂的动画效果</li>
+<li>延迟渲染切片</li>
+<li>动态添加、删除切片</li>
+<li>即插即用的插件，扩展方便</li>
+<li>兼容所有浏览器（包括IE 6）</li>
+</ul>
+<h2 id="-">依赖</h2>
+<ul>
+<li><a href="http://docs.kissyui.com">KISSY</a> 1.3.0+</li>
+<li><a href="http://gallery.kissyui.com/layer-anim/2.0.0/guide/index.html">LayerAnim</a> 1.1</li>
+</ul>
+<h2 id="-broswer-support-">浏览器兼容性（Broswer Support）</h2>
+<p>兼容所有主流浏览器：</p>
+<ul>
+<li>Chrome</li>
+<li>Internet Explorer 6+</li>
+<li>Firefox</li>
+<li>Opera</li>
+<li>Safari</li>
+</ul>
+<h2 id="-">使用手册</h2>
+<h3 id="-">初始化组件</h3>
+<pre><code>KISSY.use(&#39;kg/snake-slider/2.0.0/index&#39;, function (S, SnakeSlider)
+{
+     var slider = new SnakeSlider();
+})
+</code></pre><h3 id="-">创建轮播组件</h3>
+<p>SnakeSlider可基于任意HTML结构创建，给开发者提供足够的灵活度。例如，基于以下简单的HTML：</p>
+<pre><code>&lt;div class=&quot;slider&quot;&gt;
+    &lt;!-- 切片列表 --&gt;
+    &lt;ol&gt;
+        &lt;li&gt;  &lt;!-- 切片1 --&gt;
+           &lt;img src=&quot;slice1.jpg&quot;/&gt;
+        &lt;/li&gt;
+        &lt;li&gt;  &lt;!-- 切片2 --&gt;
+           &lt;img src=&quot;slice2.jpg&quot;/&gt;
+        &lt;/li&gt;
+    &lt;/ol&gt;
+    &lt;!-- 指示器列表 --&gt;
+    &lt;div&gt;
+        &lt;span&gt;1&lt;/span&gt;  &lt;!-- 切片1的指示器 --&gt;
+        &lt;span&gt;2&lt;/span&gt;  &lt;!-- 切片2的指示器 --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>有两种方式来创建轮播组件：</p>
+<h4 id="-js-">从JS创建</h4>
+<pre><code class="lang-javascript">KISSY.use(&quot;kg/snake-slider/2.0.0/, dom&quot;, function(S, SnakeSlider, DOM)
+{
+    // 构造切片配置参数
+    var slices = [];  // 切片列表配置参数
+    var sliceNodes = DOM.query(&quot;li&quot;), i, size;  // 切片节点列表
+    var navNodes = DOM.query(&quot;span&quot;);  // 指示器节点列表
+    for (i = 0, size = sliceNodes.size(); i &lt; size; ++ i)
+    {
+        // 构造切片配置参数
+        slices[i] =
+        {
+            sliceNode: sliceNodes[i],  // 切片节点
+            indicatorNode: navNodes[i]  // 指示器节点
+        }
+    }
+    // 创建Slider
+    var slider = new SnakeSlider(
+    {
+        activeSliceStyle: &quot;actived&quot;,  // 当前切片样式（选择符）
+        activeIndicatorStyle: &quot;actived&quot;, // 当前切片的指示器样式（选择符）
+        slices: slices  // 切片配置
+    });
+});
+</code></pre>
+<p>其中，我们遍历了所有的切片DOM节点，来构造切片的配置参数，格式如下：</p>
+<pre><code class="lang-javascript">{
+    sliceNode: ...,  // 切片节点
+    indicatorNode: ...  // 指示器节点
+}
+</code></pre>
+<p>之后，通过配置参数<code>activeSliceStyle</code>和<code>activeIndicatorStyle</code>设置当前切片和指示器的选择符为<code>actived</code>。</p>
+<p>然后通过<code>new SnakeSlider(...)</code>创建轮播组件，该轮播组件包含两个切片。鼠标移动到切片指示器上时，会切换到相应的切片。</p>
+<h4 id="-dom-">从DOM创建</h4>
+<p>除通过JS创建外，我们也可以直接从DOM创建轮播组件。此时，需要在HTML结构中增加一些属性（Attribute）和样式（Class），以便轮播组件能够识别所需的DOM结构。</p>
+<p>HTML如下：</p>
+<pre><code>&lt;div class=&quot;slider&quot; activeSliceStyle=&quot;actived&quot; activeIndicatorStyle=&quot;actived&quot;&gt;
+    &lt;!-- 切片列表 --&gt;
+    &lt;ol&gt;
+        &lt;li class=&quot;slice&quot;&gt;  &lt;!-- 切片1 --&gt;
+            &lt;img src=&quot;slice1.jpg&quot;/&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;slice&quot;&gt;  &lt;!-- 切片2 --&gt;
+            &lt;img src=&quot;slice2.jpg&quot;/&gt;
+        &lt;/li&gt;
+    &lt;/ol&gt;
+    &lt;!-- 指示器列表 --&gt;
+    &lt;div&gt;
+        &lt;span class=&quot;slice-indicator&quot;&gt;1&lt;/span&gt;  &lt;!-- 切片1的指示器 --&gt;
+        &lt;span class=&quot;slice-indicator&quot;&gt;2&lt;/span&gt;  &lt;!-- 切片2的指示器 --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>其中，属性<code>activeSliceStyle=&quot;actived&quot;</code>表示当前切片的样式（选择符），<code>activeIndicatorStyle=&quot;actived&quot;</code>表示当前指示器的样式（选择符）。</p>
+<pre><code class="lang-class=&quot;slice&quot;```用于标识切片，```class=&quot;slice-indicator&quot;```用于标识指示器。SnakeSlider默认查找这些选择符，生成切片和指示器。">
+注：指示器DOM节点必须是轮播组件DOM容器的子节点。
+
+有了上面的HTML，创建轮播组件就非常简单了：
+
+```javascript
+KISSY.use(&quot;kg/snake-slider/2.0.0/&quot;, function(S, SnakeSlider)
+{
+    // 从DOM节点创建轮播组件
+    SnakeSlider.transform(&quot;.slider&quot;);
+});
+</code></pre>
+<p>其中，<code>SnakeSlider.transform</code>为静态方法，参数支持选择符或DOM节点。</p>
+<p>如果想在切片DOM中使用自定义选择符，不使用<code>slice</code>等默认选择符，也没有问题。只需在创建轮播组件时，设置第2个参数，指定自定义的选择符即可。例如：</p>
+<pre><code>&lt;div class=&quot;my-slider&quot; activeSliceStyle=&quot;actived&quot; activeIndicatorStyle=&quot;actived&quot;&gt;
+    &lt;!-- 切片列表 --&gt;
+    &lt;ol&gt;
+        &lt;li class=&quot;my-slice&quot;&gt;  &lt;!-- 切片1 --&gt;
+            &lt;img src=&quot;slice1.jpg&quot;/&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;my-slice&quot;&gt;  &lt;!-- 切片2 --&gt;
+            &lt;img src=&quot;slice2.jpg&quot;/&gt;
+        &lt;/li&gt;
+    &lt;/ol&gt;
+    &lt;!-- 指示器列表 --&gt;
+    &lt;div&gt;
+        &lt;span class=&quot;my-slice-indicator&quot;&gt;1&lt;/span&gt;  &lt;!-- 切片1的指示器 --&gt;
+        &lt;span class=&quot;my-slice-indicator&quot;&gt;2&lt;/span&gt;  &lt;!-- 切片2的指示器 --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>切片和指示器都使用了自定义选择符<code>my-slice</code>和<code>my-slice-indicator</code>，那么，创建轮播组件的方法如下：</p>
+<pre><code class="lang-javascript">KISSY.use(&quot;kg/snake-slider/2.0.0/&quot;, function(S, SnakeSlider)
+{
+    // 从DOM节点创建轮播组件
+    SnakeSlider.transform(&quot;.my-slider&quot;, 
+    {
+        sliceSelector: &quot;my-slice&quot;,  // 切片选择符
+        indicatorSelector: &quot;my-slice-indicator&quot;  // 指示器选择符
+    });
+});
+</code></pre>
+<p>支持的选择符配置参数有：</p>
+<ul>
+<li>sliceSelector：切片节点选择符，默认值：slice</li>
+<li>indicatorSelector：指示器节点选择符，默认值：slice-indicator</li>
+<li>indicatorLayerSelector：指示器动画节点选择符，默认值：indicator-layer</li>
+<li>lazyRenderSelector：延迟加载容器节点选择符，默认值：slice-lazy</li>
+<li>sliceLayerSelector：切片动画节点选择符，默认值：slice-layer</li>
+</ul>
+<h3 id="-">添加切换效果</h3>
+<p>上面创建的轮播组件在切换时没有任何动画，仅仅是显示和隐藏切片。下面我们为其添加切换动画，修改HTML结构：</p>
+<pre><code>&lt;div class=&quot;slider&quot; activeSliceStyle=&quot;actived&quot; activeIndicatorStyle=&quot;actived&quot;&gt;
+    &lt;!-- 切片列表 --&gt;
+    &lt;ol&gt;
+        &lt;li class=&quot;slice&quot; activeEffect=&quot;{to: {opacity: 1}, duration: 0.6}&quot; inactiveEffect=&quot;{to: {opacity: 0}, duration: 0.6}&quot;&gt;
+            &lt;img src=&quot;slice1.jpg&quot;/&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;slice&quot; activeEffect=&quot;{to: {opacity: 1}, duration: 0.6}&quot; inactiveEffect=&quot;{to: {opacity: 0}, duration: 0.6}&quot;&gt;
+            &lt;img src=&quot;slice2.jpg&quot;/&gt;
+        &lt;/li&gt;
+    &lt;/ol&gt;
+    &lt;!-- 指示器列表 --&gt;
+    &lt;div&gt;
+        &lt;span class=&quot;slice-indicator&quot;&gt;1&lt;/span&gt;  &lt;!-- 切片1的指示器 --&gt;
+        &lt;span class=&quot;slice-indicator&quot;&gt;2&lt;/span&gt;  &lt;!-- 切片2的指示器 --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>上面每个切片节点（<code>&lt;li&gt;</code>）上，都增加了<code>activeEffect</code>和<code>inactiveEffect</code>属性，值为JSON字符串。</p>
+<ul>
+<li><p>activeEffect：定义切片被显示时的动画。</p>
+</li>
+<li><p>inactiveEffect：定义切片被隐藏时的动画。</p>
+</li>
+</ul>
+<h3 id="-">定时自动切换</h3>
+<p>通常，轮播组件会每隔一段时间，自动切换切片。下面，我们通过<code>switchInterval</code>配置参数来实现该功能。修改后的HTML如下：</p>
+<pre><code>&lt;div class=&quot;slider&quot; activeSliceStyle=&quot;actived&quot; activeIndicatorStyle=&quot;actived&quot; switchInterval=&quot;3&quot;&gt;
+    &lt;!-- 切片列表 --&gt;
+    &lt;ol&gt;
+        &lt;li class=&quot;slice&quot; activeEffect=&quot;{to: {opacity: 1}, duration: 0.6}&quot; inactiveEffect=&quot;{to: {opacity: 0}, duration: 0.6}&quot;&gt;
+            &lt;img src=&quot;slice1.jpg&quot;/&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;slice&quot; activeEffect=&quot;{to: {opacity: 1}, duration: 0.6}&quot; inactiveEffect=&quot;{to: {opacity: 0}, duration: 0.6}&quot;&gt;
+            &lt;img src=&quot;slice2.jpg&quot;/&gt;
+        &lt;/li&gt;
+    &lt;/ol&gt;
+    &lt;!-- 指示器列表 --&gt;
+    &lt;div&gt;
+        &lt;span class=&quot;slice-indicator&quot;&gt;1&lt;/span&gt;  &lt;!-- 切片1的指示器 --&gt;
+        &lt;span class=&quot;slice-indicator&quot;&gt;2&lt;/span&gt;  &lt;!-- 切片2的指示器 --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>其中，<code>switchInterval</code>设置为3，表示每隔3秒切换一次。如果当前切片已经是最后一个，则会自动切换显示第一个切片，如此循环往复。</p>
+<p>如果未设置<code>switchInterval</code>，或将<code>switchInterval</code>设置为 &lt; 0的值，则会自动切换会被禁用。</p>
+<h3 id="-">延迟渲染切片</h3>
+<p>为提高页面加载的速度，可以将切片HTML放在<code>&lt;xmp&gt;</code>或<code>&lt;textarea&gt;</code>等节点中，当切换到该切片时，再渲染显示。</p>
+<p>修改HTML如下：</p>
+<pre><code>&lt;div class=&quot;slider&quot; activeSliceStyle=&quot;actived&quot; activeIndicatorStyle=&quot;actived&quot; switchInterval=&quot;3&quot;&gt;
+    &lt;!-- 切片列表 --&gt;
+    &lt;ol&gt;
+        &lt;li class=&quot;slice&quot; activeEffect=&quot;{to: {opacity: 1}, duration: 0.6}&quot; inactiveEffect=&quot;{to: {opacity: 0}, duration: 0.6}&quot;&gt;
+            &lt;xmp class=&quot;slice-lazy&quot;&gt;
+                &lt;img src=&quot;slice1.jpg&quot;/&gt;
+            &lt;/xmp&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;slice&quot; activeEffect=&quot;{to: {opacity: 1}, duration: 0.6}&quot; inactiveEffect=&quot;{to: {opacity: 0}, duration: 0.6}&quot;&gt;
+            &lt;xmp class=&quot;slice-lazy&quot;&gt;
+                &lt;img src=&quot;slice2.jpg&quot;/&gt;
+            &lt;/xmp&gt;
+        &lt;/li&gt;
+    &lt;/ol&gt;
+    &lt;!-- 指示器列表 --&gt;
+    &lt;div&gt;
+        &lt;span class=&quot;slice-indicator&quot;&gt;1&lt;/span&gt;  &lt;!-- 切片1的指示器 --&gt;
+        &lt;span class=&quot;slice-indicator&quot;&gt;2&lt;/span&gt;  &lt;!-- 切片2的指示器 --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>其中，<code>class=&quot;slice-lazy&quot;</code>用于标识延迟渲染的容器节点，该节点包含切片HTML，必须是切片节点的子节点。</p>
+<p>延迟渲染的HTML中可包含JS脚本，该部分脚本会在延迟渲染后被执行。</p>
+<h2 id="-api-">开发接口（API）</h2>
+<p>一个轮播组件对象由两类JS对象组成：</p>
+<ul>
+<li>轮播组件对象：表示一个轮播组件。</li>
+<li>切片对象：表示轮播组件中的一个切片，每个切片都是一个JS对象，有自己的配置参数、方法和事件。</li>
+</ul>
+<p>轮播组件支持两种创建方式：</p>
+<ul>
+<li>JS方式创建</li>
+</ul>
+<pre><code class="lang-javascript">KISSY.use(&quot;kg/snake-slider/2.0.0/&quot;, function(S, SnakeSlider)
+{
+    var config = /* 配置参数 */;
+    new SnakeSlider(config);
+});
+</code></pre>
+<ul>
+<li>DOM方式创建</li>
+</ul>
+<pre><code>&lt;轮播组件DOM activeSliceStyle=&quot;当前切片样式（全局配置）&quot; inactiveSliceStyle=&quot;隐藏切片样式（全局配置）&quot;
+    activeIndicatorStyle=&quot;当前指示器样式（全局配置）&quot; inactiveIndicatorStyle=&quot;隐藏指示器样式（全局配置）&quot;
+    switchOnIndicator=&quot;触发切换的时机（&quot;mouseover&quot;：鼠标移上时触发切换，&quot;click&quot;：鼠标按下时触发切换）&quot; switchInterval=&quot;切换间隔时间（单位：秒）&quot; hoverPause=&quot;鼠标移到切片上时，是否停止自动切换&quot;&gt;
+
+    &lt;切片DOM id=&quot;切片标识&quot; actived=&quot;初始时是否显示&quot; activeSliceStyle=&quot;当前切片样式（覆盖全局配置）&quot; inactiveSliceStyle=&quot;隐藏切片样式（覆盖全局配置）&quot;
+    activeIndicatorStyle=&quot;当前指示器样式（覆盖全局配置）&quot; inactiveIndicatorStyle=&quot;隐藏指示器样式（覆盖全局配置）&quot; switchInterval=&quot;切换间隔时间（单位：秒）&quot;
+    activeEffect=&quot;显示切片的动画&quot; inactiveEffect=&quot;隐藏切片的动画&quot;&gt;
+        &lt;延迟渲染DOM&gt;
+        ...  &lt;-- 切片HTML --&gt;
+        &lt;/延迟渲染DOM&gt;
+    &lt;/切片DOM&gt;
+    &lt;切片DOM&gt;
+        ...
+    &lt;/切片DOM&gt;
+
+    &lt;指示器DOM&gt;
+        ...
+    &lt;/指示器DOM&gt;
+&lt;/轮播组件DOM&gt;
+</code></pre><pre><code class="lang-javascript">KISSY.use(&quot;kg/snake-slider/2.0.0/&quot;, function(S, SnakeSlider)
+{
+    var node = &quot;/* DOM节点 */&quot;;
+    SnakeSlider.transform(node);
+});
+</code></pre>
+<h3 id="-">配置参数</h3>
+<p>SnakeSlider继承了KISSY Base类，因此，配置参数可通过KISSY Attr的get方法读取，通过set方法设置。例如：</p>
+<pre><code class="lang-javascript">var slider = new SnakeSlider(...);
+slider.get(&quot;slices&quot;);  // 获取切片列表
+slider.set(&quot;switchInterval&quot;, 5);  // 设置切片自动切换间隔时间为5秒
+</code></pre>
+<h4 id="-">轮播组件配置参数</h4>
+<ul>
+<li><p><em>container</em> {String / HTMLNode}【可选，默认值：<code>&lt;body&gt;</code>节点】</p>
+<p> 轮播组件容器节点，支持选择符或DOM节点（支持的选择符请参考<a href="http://docs.kissyui.com/docs/html/api/core/dom/selector.html">KISSY DOM选择符</a>）。</p>
+<p> 该配置参数仅在初始化组件时有效，之后设置无效。</p>
+</li>
+<li><p><em>slices</em> [Object]</p>
+<p> 切片配置（数组），具体请参考“切片配置参数”。该配置参数仅在初始化组件时有效，之后设置无效。</p>
+</li>
+<li><p><em>activeSliceStyle</em> {String}【可选】</p>
+<p> 当前切片样式（选择符）。当前切片切换完毕后，在切片DOM节点上添加该样式。</p>
+</li>
+<li><p><em>inactiveSliceStyle</em> {String}【可选】</p>
+<p> 隐藏切片样式（选择符）。切片被隐藏后，在切片DOM节点上添加该样式。该参数与<code>activeSliceStyle</code>可同时设置，也可只设置其中一个。</p>
+</li>
+<li><p><em>activeIndicatorStyle</em> {String}【可选】</p>
+<p> 当前切片的指示器样式（选择符）。当前切片切换完毕后，在指示器DOM节点上添加该样式。</p>
+</li>
+<li><p><em>inactiveIndicatorStyle</em> {String}【可选】</p>
+<p> 隐藏切片的指示器样式（选择符）。切片被隐藏后，在指示器DOM节点上添加该样式。</p>
+</li>
+<li><p><em>switchOnIndicator</em> {String}【可选】</p>
+<p> 触发切换的时机。取值如下：</p>
+<ul>
+<li>&quot;mouseover&quot;：鼠标移上指示器时，触发切换。【默认值】</li>
+<li><p>&quot;click&quot;：鼠标单击指示器时，触发切换。</p>
+<p>该配置参数仅在初始化组件时有效，之后设置无效。</p>
+</li>
+</ul>
+</li>
+<li><p><em>switchInterval</em> {Number}【可选，默认值：0】</p>
+<p> 自动切换间隔时间（单位：秒）。如果该值≤0，则不自动切换。</p>
+</li>
+<li><p><em>hoverPause</em> {Boolean}【可选】</p>
+<p> 鼠标移到切片上时，是否停止自动切换。【默认值：true】</p>
+</li>
+</ul>
+<h4 id="-">切片对象配置参数</h4>
+<ul>
+<li><p><em>id</em> {String}【可选】</p>
+<p> 切片标识，用于查找切片对象。该配置参数仅在初始化组件时有效，之后设置无效。</p>
+</li>
+<li><p><em>index</em> {String}【只读】</p>
+<p> 切片显示索引，从0开始。该参数为只读参数，设置无效。</p>
+</li>
+<li><p><em>sliceNode</em> {String / HTMLNode}【可选】</p>
+<p> 切片DOM节点（选择符 / DOM节点）。该配置参数仅在初始化组件时有效，之后设置无效。</p>
+</li>
+<li><p><em>actived</em> {Boolean}【可选，默认值：false】</p>
+<p> 初始时，该切片是否为当前切片。该配置参数仅在初始化组件时有效，之后设置无效。</p>
+</li>
+<li><p><em>activeSliceStyle</em> {String}【可选】</p>
+<p> 当前切片样式（选择符）。如果设置，该参数会覆盖轮播组件配置参数<code>activeSliceStyle</code>。</p>
+</li>
+<li><p><em>inactiveSliceStyle</em> {String}【可选】</p>
+<p> 隐藏切片样式（选择符）。如果设置，该参数会覆盖轮播组件配置参数<code>inactiveSliceStyle</code>。</p>
+</li>
+<li><p><em>indicatorNode</em> {String / HTMLNode}【可选】</p>
+<p> 指示器DOM节点（选择符 / DOM节点）。该配置参数仅在初始化组件时有效，之后设置无效。</p>
+</li>
+<li><p><em>activeIndicatorStyle</em> {String}【可选】</p>
+<p> 当前切片的指示器样式（选择符）。如果设置，该参数会覆盖轮播组件配置参数<code>activeIndicatorStyle</code>。</p>
+</li>
+<li><p><em>inactiveIndicatorStyle</em> {String}【可选】</p>
+<p> 隐藏切片的指示器样式（选择符）。如果设置，该参数会覆盖轮播组件配置参数<code>inactiveIndicatorStyle</code>。</p>
+</li>
+<li><p><em>switchInterval</em> {Number}【可选，默认值：0】</p>
+<p> 自动切换间隔时间（单位：秒）。如果设置，该参数会覆盖轮播组件配置参数<code>switchInterval</code>。</p>
+</li>
+<li><p><em>activeEffect</em> {Object}【可选】</p>
+<p> 切片被显示时的动画，其值请参考<a href="http://gallery.kissyui.com/layer-anim/2.0.0/guide/index.html">LayerAnim开发手册</a>。</p>
+<p> 该配置参数仅在初始化组件时有效，之后设置无效。</p>
+</li>
+<li><p><em>inactiveEffect</em> {Object}【可选】</p>
+<p> 切片被隐藏时的动画，其值请参考<a href="http://gallery.kissyui.com/layer-anim/2.0.0/guide/index.html">LayerAnim开发手册</a>。</p>
+<p> 该配置参数仅在初始化组件时有效，之后设置无效。</p>
+</li>
+<li><p><em>activeIndicatorEffect</em> {Object}【可选】</p>
+<p> 当前切片的指示器动画，其值请参考<a href="http://gallery.kissyui.com/layer-anim/2.0.0/guide/index.html">LayerAnim开发手册</a>。</p>
+<p> 该配置参数仅在初始化组件时有效，之后设置无效。</p>
+</li>
+<li><p><em>inactiveIndicatorEffect</em> {Object}【可选】</p>
+<p> 被隐藏切片的指示器动画，其值请参考<a href="http://gallery.kissyui.com/layer-anim/2.0.0/guide/index.html">LayerAnim开发手册</a>。</p>
+<p> 该配置参数仅在初始化组件时有效，之后设置无效。</p>
+</li>
+<li><p><em>lazyRenderNode</em> {String / HTMLNode}【可选】</p>
+<p> 延迟渲染的容器节点（选择符 / DOM节点）。该配置参数仅在初始化组件时有效，之后设置无效。</p>
+</li>
+</ul>
+<h3 id="-">方法</h3>
+<h4 id="-">轮播组件方法</h4>
+<ul>
+<li><p><em>switchTo(slice)</em></p>
+<p> 切换到指定切片，同时触发<code>beforeswitch</code>事件。</p>
+<ul>
+<li><p>参数：</p>
+<p> slice {Number / 切片对象}：要切换到的切片索引或切片对象。</p>
+</li>
+</ul>
+</li>
+<li><p><em>nextSlice(recurring)</em></p>
+<p> 获取当前切片的下一切片。</p>
+<ul>
+<li><p>参数：</p>
+<p> recurring {Boolean}：是否循环（如果循环，则最后一个切片的下一个为第一个切片）。【可选参数，默认：false】</p>
+</li>
+<li><p>返回值：</p>
+<p> {Slice} 下一切片对象。</p>
+</li>
+</ul>
+</li>
+<li><p><em>previousSlice(recurring)</em></p>
+<p> 获取当前切片的上一切片。</p>
+<ul>
+<li><p>参数：</p>
+<p> recurring {Boolean}：是否循环（如果循环，则第一个切片的上一个为最后一个切片）。【可选参数，默认：false】</p>
+</li>
+<li><p>返回值：</p>
+<p> {Slice} 上一切片对象。</p>
+</li>
+</ul>
+</li>
+<li><p><em>getActiveSlice()</em></p>
+<p> 获取当前切片。</p>
+<ul>
+<li><p>返回值：</p>
+<p> {Slice} 当前切片对象。</p>
+</li>
+</ul>
+</li>
+<li><p><em>getSliceByIndex(index)</em></p>
+<p> 按索引查找切片。</p>
+<ul>
+<li><p>参数：</p>
+<p> index {Number}：切片索引。</p>
+</li>
+<li><p>返回值：</p>
+<p> {Slice} 找到的切片对象。</p>
+</li>
+</ul>
+</li>
+<li><p><em>getSliceById(id)</em></p>
+<p> 按标识查找切片。</p>
+<ul>
+<li><p>参数：</p>
+<p> id {String}：切片标识。</p>
+</li>
+<li><p>返回值：</p>
+<p> {Slice} 找到的切片对象。</p>
+</li>
+</ul>
+</li>
+<li><p><em>bindSliceEvent(name, listener, context)</em></p>
+<p> 在所有切片上，绑定DOM事件。</p>
+<ul>
+<li><p>参数：</p>
+<ul>
+<li>name {String}：事件名称。</li>
+<li>listener {Function}：事件监听方法。</li>
+<li>context {Object}：事件监听方法所属对象。【可选参数，默认：window】</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>bindIndicatorEvent(name, listener, context)</em></p>
+<p> 在所有切片指示器上，绑定DOM事件。</p>
+<ul>
+<li><p>参数：</p>
+<ul>
+<li>name {String}：事件名称。</li>
+<li>listener {Function}：事件监听方法。</li>
+<li>context {Object}：事件监听方法所属对象。【可选参数，默认：window】</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>startAutoSwitch(switchInterval)</em></p>
+<p> 启动定时切换。</p>
+<ul>
+<li><p>参数：</p>
+<p> switchInterval {Number}：定时切换间隔时间。【可选参数，默认：轮播组件配置参数<code>switchInterval</code>】</p>
+</li>
+</ul>
+</li>
+<li><p><em>stopAutoSwitch()</em></p>
+<p> 停止定时切换。</p>
+</li>
+<li><p><em>pauseAutoSwitch()</em></p>
+<p> 暂停定时切换。如果之后用户手工切换到其它切片，则定时切换会重新启动。</p>
+</li>
+<li><p><em>resumeAutoSwitch()</em></p>
+<p> 如果已暂停定时切换，则调用该方法可继续定时切换。</p>
+</li>
+<li><p><em>isAutoSwitchStarted()</em></p>
+<p> 定时切换是否已启动。</p>
+<ul>
+<li><p>返回值：</p>
+<p> {Boolean} 定时切换是否已启动。</p>
+</li>
+</ul>
+</li>
+<li><p><em>appendSlice(slice)</em></p>
+<p> 添加切片。切片添加后，触发<code>sliceadd</code>事件。</p>
+<ul>
+<li><p>参数：</p>
+<p> slice {Object / Slice}：要添加的切片（配置参数或切片对象）。</p>
+</li>
+<li><p>返回值：</p>
+<p> {Slice} 已添加的切片对象。</p>
+</li>
+</ul>
+</li>
+<li><p><em>insertSlice(slice, index)</em></p>
+<p> 插入切片。插入后，会触发<code>sliceadd</code>事件。</p>
+<ul>
+<li><p>参数：</p>
+<ul>
+<li>slice {Object / Slice}：要插入的切片（配置参数或切片对象）。</li>
+<li>index {Number}：插入的索引位置。【可选参数，默认：插入到最后】</li>
+</ul>
+</li>
+<li><p>返回值：</p>
+<p> {Slice} 已插入的切片对象。</p>
+</li>
+</ul>
+</li>
+<li><p><em>removeSlice(index)</em></p>
+<p> 删除切片。如果被删除的切片为当前切片，则删除后会自动显示下一个切片。如果没有下一个切片，则会显示上一切片。切片删除后，触发<code>sliceremove</code>事件。</p>
+<ul>
+<li><p>参数：</p>
+<p> index {Number}：被删除的切片索引。</p>
+</li>
+<li><p>返回值：</p>
+<p> {Slice} 已删除的切片对象。</p>
+</li>
+</ul>
+</li>
+<li><p><em>clearSlices()</em></p>
+<p> 删除所有切片。每删除一个切片，都会触发一次<code>sliceremove</code>事件。</p>
+</li>
+</ul>
+<h4 id="-">切片对象方法</h4>
+<ul>
+<li><p><em>activate()</em></p>
+<p> 切换到该切片。</p>
+</li>
+<li><p><em>deactivate()</em></p>
+<p> 隐藏该切片。调用该方法仅仅隐藏切片，并不会显示其它切片。</p>
+</li>
+<li><p><em>bindSliceEvent(name, listener, context)</em></p>
+<p> 在该切片上，绑定DOM事件。</p>
+<ul>
+<li><p>参数：</p>
+<ul>
+<li>name {String}：事件名称。</li>
+<li>listener {Function}：事件监听方法。</li>
+<li>context {Object}：事件监听方法所属对象。【可选参数，默认：window】</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>displayActiveSliceStyle()</em></p>
+<p> 显示当前切片样式，将切片样式设为配置参数<code>activeSliceStyle</code>值。</p>
+</li>
+<li><p><em>displayInactiveSliceStyle()</em></p>
+<p> 显示隐藏切片样式，将切片样式设为配置参数<code>inactiveSliceStyle</code>值。</p>
+</li>
+<li><p><em>bindIndicatorEvent(name, listener, context)</em></p>
+<p> 在该切片的指示器上，绑定DOM事件。</p>
+<ul>
+<li><p>参数：</p>
+<ul>
+<li>name {String}：事件名称。</li>
+<li>listener {Function}：事件监听方法。</li>
+<li>context {Object}：事件监听方法所属对象。【可选参数，默认：window】</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>displayActiveIndicatorStyle()</em></p>
+<p> 显示当前指示器样式，将指示器的样式设为配置参数<code>activeIndicatorStyle</code>值。</p>
+</li>
+<li><p><em>displayInactiveIndicatorStyle()</em></p>
+<p> 显示隐藏指示器样式，将指示器的样式设为配置参数<code>inactiveIndicatorStyle</code>值。</p>
+</li>
+<li><p><em>renderLazily()</em></p>
+<p> 延迟渲染该切片。</p>
+</li>
+<li><p><em>appendTo(slider)</em></p>
+<p> 将该切片添加到轮播组件。</p>
+<ul>
+<li><p>参数：</p>
+<p> slider {SnakeSlider}：轮播组件。</p>
+</li>
+<li><p>返回值：</p>
+<p> {Slice} 该切片对象。</p>
+</li>
+</ul>
+</li>
+<li><p><em>insertTo(slider, index)</em></p>
+<p> 将该切片插入到轮播组件。</p>
+<ul>
+<li><p>参数：</p>
+<ul>
+<li>slider {SnakeSlider}：轮播组件。</li>
+<li>index {Number}：插入的索引位置。【默认值：插入到最后】</li>
+</ul>
+</li>
+<li><p>返回值：</p>
+<p> {Slice} 该切片对象。</p>
+</li>
+</ul>
+</li>
+<li><p><em>remove()</em></p>
+<p> 删除该切片，同时删除相应的切片节点和指示器节点。</p>
+</li>
+</ul>
+<h3 id="-">事件</h3>
+<h4 id="-">轮播组件事件</h4>
+<ul>
+<li><p><em>beforeswitch(e)</em>【事件可取消（e.preventDefault）】</p>
+<p> 切片切换前，触发该事件。</p>
+<ul>
+<li><p>参数</p>
+<p> e.slice {Slice}：将要显示的切片对象。</p>
+</li>
+</ul>
+</li>
+<li><p><em>afterswitch(e)</em></p>
+<p> 切片切换后，触发该事件。该事件将在<code>beforeswitch</code>事件后立即被触发，如果配置了切换动画，则该事件在动画播放前被触发。</p>
+<ul>
+<li><p>参数</p>
+<ul>
+<li>e.slice {Slice}：当前切片对象。</li>
+<li>e.sliceInactived {Slice}：被隐藏的切片对象。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>switchnext()</em>【事件可取消（e.preventDefault）】</p>
+<p> 自动切换时，切换到下个切片前，触发该事件。</p>
+</li>
+<li><p><em>switchprevious()</em>【事件可取消（e.preventDefault）】</p>
+<p> 自动切换时，切换到上个切片前，触发该事件。</p>
+</li>
+<li><p><em>sliceadd(e)</em></p>
+<p> 添加切片后，触发该事件。</p>
+<ul>
+<li><p>参数</p>
+<ul>
+<li>e.slice {Slice}：添加的切片对象。</li>
+<li>e.index {Number}：插入的索引位置。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>sliceremove(e)</em></p>
+<p> 删除切片后，触发该事件。</p>
+<ul>
+<li><p>参数</p>
+<ul>
+<li>e.slice {Slice}：被删除的切片对象。</li>
+<li>e.index {Number}：被删除的切片索引。</li>
+<li>e.actived {Boolean}：被删除的切片是否为当前切片。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="-">切片对象事件</h4>
+<ul>
+<li><p><em>activeslicestyledisplay(e)</em>【事件可取消（e.preventDefault）】</p>
+<p> 添加当前切片的样式前，触发该事件。</p>
+<ul>
+<li><p>参数</p>
+<p> e.sliceInactived {Slice}：隐藏的切片对象。</p>
+</li>
+</ul>
+</li>
+<li><p><em>inactiveslicestyledisplay(e)</em>【事件可取消（e.preventDefault）】</p>
+<p> 添加隐藏切片的样式前，触发该事件。</p>
+<ul>
+<li><p>参数</p>
+<p> e.sliceActived {Slice}：当前切片对象。</p>
+</li>
+</ul>
+</li>
+<li><p><em>activeindicatorstyledisplay(e)</em>【事件可取消（e.preventDefault）】</p>
+<p> 显示当前指示器的样式前，触发该事件。</p>
+<ul>
+<li><p>参数</p>
+<p> e.sliceInactived {Slice}：隐藏切片对象。</p>
+</li>
+</ul>
+</li>
+<li><p><em>inactiveindicatorstyledisplay(e)</em>【事件可取消（e.preventDefault）】</p>
+<p> 显示隐藏指示器的样式前，触发该事件。</p>
+<ul>
+<li><p>参数</p>
+<p> e.sliceActived {Slice}：当前切片对象。</p>
+</li>
+</ul>
+</li>
+<li><p><em>lazyrender()</em></p>
+<p> 延迟渲染切片后，触发该事件。</p>
+</li>
+</ul>
+>>>>>>> 37ab2033e1007dce1d8cd3fd9dcec70bac718e11
 
           <div style="display:none;"><script type="text/javascript" src="http://tajs.qq.com/stats?sId=36378479" charset="UTF-8"></script></div>
           <script src="http://docs.kissyui.com/1.4/source/guideline/templates/assets/com.js"></script>
