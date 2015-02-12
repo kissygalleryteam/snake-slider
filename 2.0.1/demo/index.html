@@ -1,0 +1,453 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>SnakeSlider Demo</title>
+    <link rel="stylesheet" href="index.css"/>
+    <script src="http://g.tbcdn.cn/kissy/k/1.4.7/seed-min.js" charset="utf-8"></script>
+</head>
+
+<body>
+<div class="slider">
+    <div class="slider-content">
+        <div id="slice1" class="slider-slice">
+            <span class="leaf1"></span>
+            <span class="leaf2"></span>
+            <span class="leaf3"></span>
+            <h1>SnakeSlider</h1>
+            <h2 class="subtitle1">专业的动画轮播组件</h2>
+            <h2 class="subtitle2">可随意定制属于自己的切换动画</h2>
+        </div>
+        <div id="slice2" class="slider-slice">
+            <h1>SnakeSlider</h1>
+            <h2 class="subtitle1">多用途组件</h2>
+            <h2 class="subtitle2">不仅仅是轮播组件，也是Tab、抽屉、手风琴组件</h2>
+        </div>
+        <div id="slice3" class="slider-slice">
+            <h1>SnakeSlider</h1>
+            <h2 class="subtitle1">使用方便，支持将HTML配置转换为组件</h2>
+            <h2 class="subtitle2">内置插件机制，易于扩展</h2>
+        </div>
+        <div class="slider-misc">Demo by 阿古</div>
+    </div>
+    <a class="nav-direction nav-prev" href="#" hideFocus="true"></a>
+    <a class="nav-direction nav-next" href="#" hideFocus="true"></a>
+    <div class="nav-wrapper">
+        <a class="nav-play" href="#" hideFocus="true"></a>
+            <span class="nav-btn">
+                <a id="nav1" class="slider-slice-indicator" href="#" hideFocus="true"></a>
+                <a id="nav2" class="slider-slice-indicator" href="#" hideFocus="true"></a>
+                <a id="nav3" class="slider-slice-indicator" href="#" hideFocus="true"></a>
+            </span>
+        <a class="nav-stop" href="#" hideFocus="true"></a>
+    </div>
+</div>
+
+<script>
+
+var S = KISSY;
+S.config({
+    packages:[
+        {
+            name:"kg",
+            path:'http://g.tbcdn.cn',
+            charset:"utf-8"
+        }
+    ]
+});
+if (S.Config.debug) {
+    var debugPath = "../build";
+    S.config({
+        packages:[
+            {
+                name:"kg/snake-slider/2.0.1",
+                path:debugPath,
+                charset:"utf-8",
+                ignorePackageNameInUri:true
+            }
+        ]
+    });
+}
+
+KISSY.use('kg/snake-slider/2.0.1/, dom, event', function(S, SnakeSlider, DOM, Event)
+{
+    var slider = new SnakeSlider(
+            {
+                switchInterval: 8,  // 自动切换间隔时间（单位：秒）
+                switchOnIndicator: "click",  // 切片切换时机
+                activeIndicatorStyle: "actived", // 激活的指示器DOM节点样式（选择符）
+                slices: // 选项卡列表
+                        [
+                            {
+                                sliceNode: "#slice1",  // 切片DOM节点
+                                indicatorNode: "#nav1",  // 指示器DOM节点
+                                activeEffect:  // 切片激活效果
+                                        [
+                                            {
+                                                node: "#slice1",
+                                                from:
+                                                {
+                                                    scale: 1.5,
+                                                    opacity: 0,
+                                                    autoAlpha: 0
+                                                },
+                                                to:
+                                                {
+                                                    scale: 1,
+                                                    opacity: 1,
+                                                    autoAlpha: 1,
+                                                    transformOrigin: "center center"
+                                                },
+                                                easing: "Power2.easeInOut",
+                                                duration: 0.6
+                                            },
+                                            {  // 左上叶子右移
+                                                node: "#slice1 .leaf1",
+                                                from:
+                                                {
+                                                    left: -234
+                                                },
+                                                to:
+                                                {
+                                                    left: 10
+                                                },
+                                                overwrite: "all",
+                                                align: "sequence",
+                                                duration: 0.4
+                                            },
+                                            {  // 左下叶子上移
+                                                node: "#slice1 .leaf2",
+                                                from:
+                                                {
+                                                    top: 380
+                                                },
+                                                to:
+                                                {
+                                                    top: 180
+                                                },
+                                                overwrite: "all",
+                                                duration: 0.4
+                                            },
+                                            {  // 右上叶子下移
+                                                node: "#slice1 .leaf3",
+                                                from:
+                                                {
+                                                    top: -480
+                                                },
+                                                to:
+                                                {
+                                                    top: -210
+                                                },
+                                                overwrite: "all",
+                                                duration: 0.4
+                                            },
+                                            {  // 主标题
+                                                node: "#slice1 h1",
+                                                from:
+                                                {
+                                                    textShadow: "0px 0px 0px #FFF",
+                                                    opacity: 0
+                                                },
+                                                to:
+                                                {
+                                                    textShadow: "2px 4px 3px #546223",
+                                                    opacity: 1
+                                                },
+                                                delay: 0.1,
+                                                easing: "Power2.easeInOut",
+                                                //overwrite: "all",
+                                                duration: 0.8
+                                            },
+                                            [
+                                                {  // 副标题1左移
+                                                    node: "#slice1 .subtitle1",
+                                                    from:
+                                                    {
+                                                        left: 420,
+                                                        opacity: 0
+                                                    },
+                                                    to:
+                                                    {
+                                                        left: 360,
+                                                        opacity: 1
+                                                    },
+                                                    align: "sequence",
+                                                    overwrite: "all",
+                                                    easing: "Power3.easeOut",
+                                                    duration: 1
+                                                },
+                                                {  // 副标题2左移
+                                                    node: "#slice1 .subtitle2",
+                                                    from:
+                                                    {
+                                                        left: 420,
+                                                        opacity: 0
+                                                    },
+                                                    to:
+                                                    {
+                                                        left: 360,
+                                                        opacity: 0.8
+                                                    },
+                                                    align: "sequence",
+                                                    delay: -0.4,
+                                                    overwrite: "all",
+                                                    easing: "Power3.easeOut",
+                                                    duration: 1
+                                                }
+                                            ]
+                                        ],
+                                inactiveEffect:  // 切片闲置效果
+                                        [
+                                            {
+                                                node: "#slice1",
+                                                from:
+                                                {
+                                                    scale: 1,
+                                                    opacity: 1,
+                                                    autoAlpha: 1
+                                                },
+                                                to:
+                                                {
+                                                    scale: 1.5,
+                                                    opacity: 0,
+                                                    autoAlpha: 0
+                                                },
+                                                easing: "Power2.easeInOut",
+                                                duration: 0.6
+                                            }
+                                        ]
+                            },
+                            {
+                                sliceNode: "#slice2",  // 切片DOM节点
+                                indicatorNode: "#nav2",  // 指示器DOM节点
+                                activeEffect:  // 切片激活效果
+                                        [
+                                            {
+                                                node: "#slice2",
+                                                from:
+                                                {
+                                                    scale: 1.5,
+                                                    opacity: 0,
+                                                    autoAlpha: 0
+                                                },
+                                                to:
+                                                {
+                                                    scale: 1,
+                                                    opacity: 1,
+                                                    autoAlpha: 1
+                                                },
+                                                easing: "Power2.easeInOut",
+                                                duration: 0.6
+                                            },
+                                            {  // 主标题
+                                                node: "#slice2 h1",
+                                                from:
+                                                {
+                                                    width: 0
+                                                },
+                                                to:
+                                                {
+                                                    width: 310
+                                                },
+                                                align: "sequence",
+                                                easing: "Power0.easeOut",
+                                                overwrite: "all",
+                                                duration: 0.4
+                                            },
+                                            [
+                                                {
+                                                    node: "#slice2 .subtitle1",
+                                                    from:
+                                                    {
+                                                        top: 270,
+                                                        opacity: 0
+                                                    },
+                                                    to:
+                                                    {
+                                                        top: 210,
+                                                        opacity: 1
+                                                    },
+                                                    align: "sequence",
+                                                    overwrite: "all",
+                                                    easing: "Power3.easeOut",
+                                                    duration: 1
+                                                },
+                                                {
+                                                    node: "#slice2 .subtitle2",
+                                                    from:
+                                                    {
+                                                        top: 320,
+                                                        opacity: 0
+                                                    },
+                                                    to:
+                                                    {
+                                                        top: 260,
+                                                        opacity: 0.8
+                                                    },
+                                                    align: "sequence",
+                                                    delay: -0.4,
+                                                    overwrite: "all",
+                                                    easing: "Power3.easeOut",
+                                                    duration: 1
+                                                }
+                                            ]
+                                        ],
+                                inactiveEffect:  // 切片闲置效果
+                                        [
+                                            {
+                                                node: "#slice2",
+                                                from:
+                                                {
+                                                    scale: 1,
+                                                    opacity: 1,
+                                                    autoAlpha: 1
+                                                },
+                                                to:
+                                                {
+                                                    scale: 1.5,
+                                                    opacity: 0,
+                                                    autoAlpha: 0
+                                                },
+                                                easing: "Power2.easeInOut",
+                                                duration: 0.6
+                                            },
+                                            {  // 主标题
+                                                node: "#slice2 h1",
+                                                to:
+                                                {
+                                                    width: 0
+                                                },
+                                                align: "sequence",
+                                                duration: 0.1
+                                            }
+                                        ]
+                            },
+                            {
+                                sliceNode: "#slice3",  // 切片DOM节点
+                                indicatorNode: "#nav3",  // 指示器DOM节点
+                                activeEffect:  // 切片激活效果
+                                        [
+                                            {
+                                                node: "#slice3",
+                                                from:
+                                                {
+                                                    scale: 1.5,
+                                                    opacity: 0,
+                                                    autoAlpha: 0
+                                                },
+                                                to:
+                                                {
+                                                    scale: 1,
+                                                    opacity: 1,
+                                                    autoAlpha: 1
+                                                },
+                                                easing: "Power2.easeInOut",
+                                                duration: 0.6
+                                            },
+                                            {  // 主标题
+                                                node: "#slice3 h1",
+                                                from:
+                                                {
+                                                    rotation: 0,
+                                                    opacity: 0
+                                                },
+                                                to:
+                                                {
+                                                    rotation: 720,
+                                                    opacity: 1
+                                                },
+                                                align: "sequence",
+                                                easing: "Power2.easeOut",
+                                                overwrite: "all",
+                                                duration: 0.6
+                                            },
+                                            [
+                                                {
+                                                    node: "#slice3 .subtitle1",
+                                                    from:
+                                                    {
+                                                        left: 300,
+                                                        opacity: 0
+                                                    },
+                                                    to:
+                                                    {
+                                                        left: 360,
+                                                        opacity: 1
+                                                    },
+                                                    align: "sequence",
+                                                    overwrite: "all",
+                                                    easing: "Power3.easeOut",
+                                                    duration: 1
+                                                },
+                                                {
+                                                    node: "#slice3 .subtitle2",
+                                                    from:
+                                                    {
+                                                        left: 420,
+                                                        opacity: 0
+                                                    },
+                                                    to:
+                                                    {
+                                                        left: 360,
+                                                        opacity: 0.8
+                                                    },
+                                                    overwrite: "all",
+                                                    easing: "Power3.easeOut",
+                                                    duration: 1
+                                                }
+                                            ]
+                                        ],
+                                inactiveEffect:  // 切片闲置效果
+                                        [
+                                            {
+                                                node: "#slice3",
+                                                from:
+                                                {
+                                                    scale: 1,
+                                                    opacity: 1,
+                                                    autoAlpha: 1
+                                                },
+                                                to:
+                                                {
+                                                    scale: 1.5,
+                                                    opacity: 0,
+                                                    autoAlpha: 0
+                                                },
+                                                easing: "Power2.easeInOut",
+                                                duration: 0.6
+                                            }
+                                        ]
+                            }
+                        ]
+            });
+    // 切换控制
+    // 继续自动切换
+    Event.on(".nav-play", "click", function(e)
+    {
+        e.preventDefault();
+        DOM.removeClass(DOM.parent(e.currentTarget), "nav-paused");
+        slider.startAutoSwitch();  // 启动自动切换
+    });
+    // 停止自动切换
+    Event.on(".nav-stop", "click", function(e)
+    {
+        e.preventDefault();
+        DOM.addClass(DOM.parent(e.currentTarget), "nav-paused");
+        slider.stopAutoSwitch();  // 停止自动切换
+    });
+    // 切换上一切片
+    Event.on(".nav-prev", "click", function(e)
+    {
+        e.preventDefault();
+        slider.switchPrevious();  // 切换到上一切片
+    });
+    // 切换下一切片
+    Event.on(".nav-next", "click", function(e)
+    {
+        e.preventDefault();
+        slider.switchNext();  // 切换到下一切片
+    });
+});
+</script>
+</body>
+</html>
