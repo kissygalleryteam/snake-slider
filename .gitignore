@@ -4,5 +4,3 @@ npm-debug.log
 *.swp
 .sw*
 .idea/*
-/.project
-/.settings
