@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Slider</title>
+    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://docs.kissyui.com/1.4/source/guideline/templates/assets/com-prettify.css">
+    <link rel="stylesheet" href="http://docs.kissyui.com/1.4/source/guideline/templates/assets/com.css">
+    <script src="http://cdn.staticfile.org/jquery/2.1.1-rc2/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://cdn.staticfile.org/prettify/r298/prettify.min.js"></script>
+    <script src="http://g.tbcdn.cn/kissy/k/1.4.8/seed-min.js" data-config="{combine:true}"></script>
+  </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <div id="header"><a href="http://docs.kissyui.com/" class="logo">kissy</a>
+      <nav><a href="http://docs.kissyui.com/1.4/docs/html/coms.html">优秀组件推荐</a></nav>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3 bs-docs-sidebar">
+          <ul data-spy="affix" data-offset-top="0" class="nav nav-list bs-docs-sidenav"></ul>
+        </div>
+        <div class="span9 bs-docs-content">
+          <h1 data-id="undefined" class="title">Slider</h1>
+          <p class="author-wrapper"><span>组件有问题？旺旺联系作者：</span><a href="https://github.com/undefined" target="_blank" data-name="jixiangac" class="author"><img src="http://0.gravatar.com/avatar/9886ba343b9841047ebab7dba3c7dcf4?s=60" alt="jixiangac"></a><span class="author-name">jixiangac</span>
+          </p>
+          <div class="common-link"><a href="../demo/index.html" target="_blank" class="demo">示例</a><a href="https://github.com/kissygalleryteam/Slider" target="_blank" class="source">源码</a></div>
+          <p class="com-info"><span class="info-label">View</span><span data-com="Slider" class="J_View">434</span></p>
+          <p class="com-info"><span class="info-label">所属分类</span><a href="http://kpm.taobao.net/list/表单">表单</a><span class="info-label tag-label">组件标签</span><a href="http://kpm.taobao.net/list/tag?tag=slider">slider</a>
+          </p>
+          <p class="com-info"><span class="info-label">kissy版本</span><span>1.4.X</span>
+          </p><h2 id="-">综述</h2>
+<p>Slider。</p>
+<p><img src="http://gtms02.alicdn.com/tps/i2/TB1DApgHXXXXXbOXXXXFvIM3VXX-434-180.png" alt="http://gtms02.alicdn.com/tps/i2/TB1DApgHXXXXXbOXXXXFvIM3VXX-434-180.png"></p>
+<h2 id="-">初始化组件</h2>
+<pre><code>//皮肤文件建议直接拿源码的less文件根据自己业务定制化使用
+S.use(&#39;kg/slider/1.0.0/index&#39;, function (S, Slider) {
+     var vc-slider = new Slider({
+        $target: &#39;#slider&#39;
+     });
+})
+
+//DOM结构
+&lt;div id=&quot;slider&quot; class=&quot;vc-slider&quot;&gt;
+    &lt;div class=&quot;vc-slider-track&quot;&gt;
+        &lt;div class=&quot;vc-slider-range&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;vc-slider-handle&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><h2 id="api-">API说明</h2>
+<h3 id="-">属性</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">默认值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$target</td>
+<td style="text-align:left">String/NodeList</td>
+<td style="text-align:left">&#39;&#39;</td>
+<td style="text-align:left">容器</td>
+</tr>
+<tr>
+<td style="text-align:left">orientation</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">&#39;horizontal&#39;</td>
+<td style="text-align:left">方向，<em>&#39;horizontal&#39;</em> / <em>&#39;vertical&#39;</em></td>
+</tr>
+<tr>
+<td style="text-align:left">min</td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">最小值</td>
+</tr>
+<tr>
+<td style="text-align:left">max</td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">100</td>
+<td style="text-align:left">最大值</td>
+</tr>
+<tr>
+<td style="text-align:left">value</td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">当前值</td>
+</tr>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">&#39;value&#39;</td>
+<td style="text-align:left">类型，<em>&#39;value&#39;</em> / <em>&#39;min&#39;</em> / <em>&#39;max&#39;</em></td>
+</tr>
+<tr>
+<td style="text-align:left">step</td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">梯级，正整数</td>
+</tr>
+<tr>
+<td style="text-align:left">readOnly</td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">只读，值不能修改，除非<strong>readOnly = false</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">disabled</td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">禁用，值可以修改，但不能与用户交互，除非<strong>disabled = false</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">方法</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">返回值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">show</td>
+<td style="text-align:left">/</td>
+<td style="text-align:left">/</td>
+<td style="text-align:left">显示组件</td>
+</tr>
+<tr>
+<td style="text-align:left">hide</td>
+<td style="text-align:left">/</td>
+<td style="text-align:left">/</td>
+<td style="text-align:left">隐藏组件</td>
+</tr>
+<tr>
+<td style="text-align:left">destroy</td>
+<td style="text-align:left">/</td>
+<td style="text-align:left">/</td>
+<td style="text-align:left">析构</td>
+</tr>
+<tr>
+<td style="text-align:left">setter</td>
+<td style="text-align:left"><em>&#39;value&#39;</em> / <em>&#39;readOnly&#39;</em> / <em>&#39;disabled&#39;</em> / <em>&#39;step&#39;</em></td>
+<td style="text-align:left">/</td>
+<td style="text-align:left">设置参数对应的属性值</td>
+</tr>
+<tr>
+<td style="text-align:left">getter</td>
+<td style="text-align:left"><em>&#39;value&#39;</em> / <em>&#39;readOnly&#39;</em> / <em>&#39;disabled&#39;</em> / <em>&#39;step&#39;</em></td>
+<td style="text-align:left">返回参数对应的属性值</td>
+<td style="text-align:left">返回参数对应的属性值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">事件</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">create</td>
+<td style="text-align:left">外抛的CustomEventObject</td>
+<td style="text-align:left">组件创建后触发</td>
+</tr>
+<tr>
+<td style="text-align:left">start</td>
+<td style="text-align:left">外抛的CustomEventObject</td>
+<td style="text-align:left">组件开始滑动时触发</td>
+</tr>
+<tr>
+<td style="text-align:left">slide</td>
+<td style="text-align:left">外抛的CustomEventObject</td>
+<td style="text-align:left">组件滑动进行中触发</td>
+</tr>
+<tr>
+<td style="text-align:left">stop</td>
+<td style="text-align:left">外抛的CustomEventObject</td>
+<td style="text-align:left">组件停止滑动时触发</td>
+</tr>
+<tr>
+<td style="text-align:left">change</td>
+<td style="text-align:left">外抛的CustomEventObject</td>
+<td style="text-align:left">通过<em>setter(&#39;value&#39;, xxx)</em>改变组件当前值后触发</td>
+</tr>
+<tr>
+<td style="text-align:left">destroy</td>
+<td style="text-align:left">外抛的CustomEventObject</td>
+<td style="text-align:left">组件析构后触发</td>
+</tr>
+</tbody>
+</table>
+
+          <div style="display:none;"><script type="text/javascript" src="http://tajs.qq.com/stats?sId=36378479" charset="UTF-8"></script></div>
+          <script src="http://docs.kissyui.com/1.4/source/guideline/templates/assets/com.js"></script>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
