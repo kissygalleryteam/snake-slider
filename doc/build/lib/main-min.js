@@ -1,1 +1,0 @@
-KISSY.add("kg/slider/1.0.0/lib/main",["node","base"],function(e,i,n,a){var d=(i("node").all,i("base"));a.exports=d.extend({initializer:function(){}},{ATTRS:{}})});
