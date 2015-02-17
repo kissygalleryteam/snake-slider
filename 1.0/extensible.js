@@ -1,5 +1,5 @@
 /**
- * @fileoverview 轮播组件 - 扩展能力模块（支持添加静态扩展模块/插件模块，所有扩展模块/插件模块必须为类（Function），其构造函数为空，如需初始化，必须定义在初始化方法initializer中）
+ * @fileoverview 轮播组件 - 扩展能力模块（支持添加静态扩展模块/插件模块，所有扩展模块/插件模块必须为类（Function），其构造函数为空，如需初始化，必须定义在初始化方法init中）
  * @author 阿古<agu.hc@taobao.com>
  * @module snake-slider
  * @version 1.0
@@ -13,10 +13,10 @@ KISSY.add(function(KISSY, Base)
          * 创建组合类
          * @public
          * @param extentions {Function / [Function]} 扩展类（其静态属性和原型属性将被复制到新创建的组合类中）
-         * @param initializer {Function} 初始化方法（可选，组合类初始化后，才调用该方法）
+         * @param init {Function} 初始化方法（可选，组合类初始化后，才调用该方法）
          * @returns {Function} 组合类
          */
-        combine: function(extentions, initializer)
+        combine: function(extentions, init)
         {
             var result = this._cloneDeeply(this), size, i;
             if (extentions)
@@ -38,17 +38,17 @@ KISSY.add(function(KISSY, Base)
             {
                 KISSY.extend(i, Base);
             }
-            this._addInitializer(result, initializer);  // 添加初始化回调方法
+            this._addInitializer(result, init);  // 添加初始化回调方法
             return result;
         },
 
         /**
          * 添加插件模块
          * @param plugins {Function / [Function]} 插件类（其静态属性和原型属性将被复制到基类中）
-         * @param initializer {Function} 初始化方法（可选参数，插件初始化后，才调用该方法）
+         * @param init {Function} 初始化方法（可选参数，插件初始化后，才调用该方法）
          * @returns {Function} 基类（其中包含插件的属性和方法）
          */
-        plug: function(plugins, initializer)
+        plug: function(plugins, init)
         {
             var result = this, size, i;
             if (plugins)
@@ -69,7 +69,7 @@ KISSY.add(function(KISSY, Base)
                 {
                     KISSY.extend(i, Base);
                 }
-                this._addInitializer(result, initializer);  // 添加初始化回调方法
+                this._addInitializer(result, init);  // 添加初始化回调方法
             }
             return result;
         },
@@ -196,20 +196,20 @@ KISSY.add(function(KISSY, Base)
                         if ((type = src.prototype) && ! KISSY.isEmptyObject(type))  // 类
                         {
                             context.push(src);  // 保存已复制对象，以便检查循环引用
-                            // 创建新构造函数，调用初始化方法initializer
+                            // 创建新构造函数，调用初始化方法init
                             result = src._zoo_cloned_flag = function()
                             {
-                                var constructor = this.constructor, args = arguments, initializer = this.initializer, size, i;
+                                var constructor = this.constructor, args = arguments, init = this.init, size, i;
                                 if (constructor && (constructor = constructor.superclass))  // 调用父类构造函数
                                 {
                                     constructor.constructor.apply(this, args);
                                 }
-                                if (initializer)  // 执行初始化方法
+                                if (init)  // 执行初始化方法
                                 {
-                                    initializer = initializer instanceof Array ? initializer : [initializer];
-                                    for (size = initializer.length, i = 0; i < size;)
+                                    init = init instanceof Array ? init : [init];
+                                    for (size = init.length, i = 0; i < size;)
                                     {
-                                        initializer[i ++].apply(this, args);
+                                        init[i ++].apply(this, args);
                                     }
                                 }
                                 this.fire("zooinstanceinitialized", {args: args});  // 触发初始化完成事件
@@ -290,22 +290,22 @@ KISSY.add(function(KISSY, Base)
          * 添加初始化回调方法
          * @private
          * @param cls 类
-         * @param initializer 初始化方法
+         * @param init 初始化方法
          */
-        _addInitializer: function(cls, initializer)
+        _addInitializer: function(cls, init)
         {
-            if (initializer)
+            if (init)
             {
                 var handler = function()
                 {
                     this.on("zooinstanceinitialized", function(e)  // 实例化后，调用初始化回调方法
                     {
-                        initializer.apply(this, e.args);
+                        init.apply(this, e.args);
                     });
                 }, type, handlers;
                 if (type = cls.prototype)  // 原型对象
                 {
-                    if (handlers = type.initializer)  // 原型对象中的initializer
+                    if (handlers = type.init)  // 原型对象中的init
                     {
                         if (handlers instanceof Array)
                         {
@@ -313,12 +313,12 @@ KISSY.add(function(KISSY, Base)
                         }
                         else  // 非数组
                         {
-                            type.initializer = [handlers, handler];
+                            type.init = [handlers, handler];
                         }
                     }
                     else  // 无初始化方法
                     {
-                        type.initializer = handler;
+                        type.init = handler;
                     }
                 }
             }

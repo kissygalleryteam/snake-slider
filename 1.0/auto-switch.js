@@ -88,7 +88,7 @@ KISSY.add(function(KISSY, DOM)
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
             this.on("afterswitch", this.resumeAutoSwitch);  // 切换后，继续自动切换
             if (this.get("hoverPause"))  // 鼠标移到切片上时，是否停止切换

@@ -48,9 +48,9 @@ KISSY.add(function(KISSY, DOM, Switching, AutoSwitch, Indicator, LazyRender, Sli
      * 初始化方法
      * @param config 配置参数
      */
-    var initializer = function(config)
+    var init = function(config)
     {
-        //console.log("zoo.SliderExt.initializer");
+        //console.log("zoo.SliderExt.init");
         this.bindIndicatorEvent(this.get("switchOnIndicator"), function(e, Switching, slice)  // 绑定指示器节点事件
         {
             e.preventDefault();
@@ -78,7 +78,7 @@ KISSY.add(function(KISSY, DOM, Switching, AutoSwitch, Indicator, LazyRender, Sli
         this.startAutoSwitch();  // 启动定时切换
     };
     // 创建轮播组件
-    return Switching.combine([Indicator, AutoSwitch, LazyRender, SliceSwitchEffect, IndicatorSwitchEffect, SliceManagement, SliderExt], initializer);
+    return Switching.combine([Indicator, AutoSwitch, LazyRender, SliceSwitchEffect, IndicatorSwitchEffect, SliceManagement, SliderExt], init);
 },
 {
     requires: ["dom", "./switching", "./auto-switch", "./indicator", "./lazy-render", "./slice-switch-effect", "./indicator-switch-effect", "./slice-management"]

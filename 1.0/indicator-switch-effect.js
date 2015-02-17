@@ -152,7 +152,7 @@ KISSY.add(function(KISSY, DOM, LayerAnim)
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
             this.on("activeindicatorstyledisplay", this._runActiveIndicatorEffect);  // 绑定显示激活样式事件
             this.on("inactiveindicatorstyledisplay", this._runInactiveIndicatorEffect);  // 绑定显示闲置样式事件

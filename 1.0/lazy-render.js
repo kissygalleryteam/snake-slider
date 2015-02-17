@@ -31,7 +31,7 @@ KISSY.add(function(KISSY, DOM)
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
             this.on("beforeswitch", this._lazyRenderHandler);
         },
@@ -98,7 +98,7 @@ KISSY.add(function(KISSY, DOM)
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
             this.bindEventConfiguration(["lazyrender"], config);  // 绑定初始化事件配置
         },

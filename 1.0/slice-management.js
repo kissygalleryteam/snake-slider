@@ -23,7 +23,7 @@ KISSY.add(function(KISSY)
          * @interface Extensible
          * @param config 配置参数
          */
-        initializer: function(config)
+        init: function(config)
         {
             this.bindEventConfiguration(["sliceadd", "sliceremove"], config);  // 绑定初始化事件配置
         },
